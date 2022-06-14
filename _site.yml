@@ -1,6 +1,4 @@
 name: "my-website"
-output_dir: "docs" 
-output: rmdformats::readthedown
 navbar:
   title: "My Website"
   left:
