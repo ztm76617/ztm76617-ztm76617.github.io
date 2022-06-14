@@ -10,4 +10,5 @@ navbar:
       href: data_viz.html
     - text: "Influential Readings"
       href: readings.html
+theme: jekyll-theme-slate
       
