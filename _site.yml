@@ -1,0 +1,15 @@
+name: "my-website"
+output_dir: "docs" 
+output: rmdformats::readthedown
+navbar:
+  title: "My Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Data Visualizations"
+      href: data_viz.html
+    - text: "Influential Readings"
+      href: readings.html
+      

@@ -1,0 +1,203 @@
+---
+title: "Data Visualizations"
+---
+
+```{r include = FALSE}
+#---------------------------------------------------------------------
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center")
+#---------------------------------------------------------------------
+# Load Packages
+#---------------------------------------------------------------------
+library(tidyverse)
+library(interactions)
+library(readxl)
+library(captioner)
+#---------------------------------------------------------------------
+# Load Data
+#---------------------------------------------------------------------
+mega_combined_vars_df_SUBSET_added_vars <- readRDS("mega_combined_vars_df_SUBSET_added_vars.rds")
+#---------------------------------------------------------------------
+new_mega_edits_df <- readRDS("new_mega_edits_df.rds")
+#---------------------------------------------------------------------
+tax_expenditure_distriibution_df <- read_excel("tax expenditure distriibution.xlsx")
+#---------------------------------------------------------------------
+tax_expenditure_distriibution_df_v2 <- readRDS("tax_expenditure_distriibution_df_v2.rds")
+#-----------------------------------------------------------------------------------------------
+```
+
+***
+## Barplots
+
+```{r tax_expenditure_dist, cache=TRUE}
+#--------------------------------------------------------------------------------
+# Solid Barplot
+#--------------------------------------------------------------------------------
+tax_expenditure_distriibution_df_v2 %>%
+  mutate(income_group = factor(income_group, c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile", "top_quintile", "top_1pct"))) %>%
+  filter(income_group %in% c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile", "top_quintile", "top_1pct")) %>%
+  ggplot(aes(income_group, income_tax_expenditure_share)) +
+  geom_bar(stat = "identity", position = position_stack(reverse = TRUE), width = 0.5) +
+  labs(title = "Share of Income Tax Expenditures",
+       subtitle = "United States (2019)",
+       x = "Income Group",
+       y = "Share of Income Tax Expenditures (%)",
+       caption = "
+       Data source(s): Congressional Budget Office") +
+  theme_bw() +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.title = element_blank(),
+        legend.background = element_blank(),
+        legend.position = "bottom",
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_discrete(breaks = c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile", "top_quintile", "top_1pct"),
+                   labels = c("Q1", "Q2", "Q3", "Q4", "Q5", "Top 1%"))
+#--------------------------------------------------------------------------------
+```
+
+***
+## Lineplots
+
+```{r inequality_plot, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+#--------------------------------------------------------------------------------
+mega_combined_vars_df_SUBSET_added_vars %>%
+  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR",
+                                  "NOR", "DEU", "FRA")) %>%
+  rename("Private Social Spending (% GDP)" = oecd_total_private_socspend_full_pop_pct_gdp,
+         "Top 1% Income Share" = WID_pre_tax_income_share_top_1pct) %>%
+  select(country_name, year, "Private Social Spending (% GDP)", "Top 1% Income Share") %>%
+  gather(key = "Type", value = "value", -country_name, -year) %>%
+  ggplot(aes(x = year, y = value)) +
+  geom_line(aes(linetype = Type)) +
+  labs(title = "Private Welfare Spending vs. Income Inequality",
+       x = "Year",
+       y = "Percent (%)",
+       linetype = "",
+       caption = "
+       Data source(s): OECD Social Protection Database & World Inequality Database") +
+  theme_bw() +
+  theme(text = element_text(face = 'bold'),
+        axis.text.x = element_text(angle = 35, hjust = 1),
+        panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_continuous(limits = c(1980, 2020), breaks = seq(1980, 2020, by = 10)) +
+  facet_wrap(vars(country_name))
+#--------------------------------------------------------------------------------
+```
+
+***
+
+```{r asset_plot, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+
+mega_combined_vars_df_SUBSET_added_vars %>%
+  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR",
+                                  "FRA", "JPN", "DEU")) %>%
+  select(country_name, year,
+         WID_pct_gdp_corporate_financial_assets,
+         WID_pct_gdp_corporate_nonfinancial_assets) %>%
+  rename("Financial Assets" = WID_pct_gdp_corporate_financial_assets,
+         "Nonfinancial Assets" = WID_pct_gdp_corporate_nonfinancial_assets) %>%
+  gather(key = "Type", value = "value", -country_name, -year) %>%
+  ggplot(aes(x = year, y = value)) +
+  geom_line(aes(linetype = Type)) +
+  labs(title = "Cross-National Corporate Asset Levels (% GDP)",
+       x = "Year",
+       y = "Percent of GDP (%)",
+       linetype = "",
+       caption = "
+       Data source(s): World Inequality Database") +
+  theme_bw() +
+  theme(text = element_text(face = 'bold'),
+        axis.text.x = element_text(angle = 35, hjust = 1),
+        panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_continuous(limits = c(1980, 2020), breaks = seq(1980, 2020, by = 10)) +
+  facet_wrap(vars(country_name))
+```
+
+***
+
+```{r debt, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+ mega_combined_vars_df_SUBSET_added_vars %>%
+  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR", "FRA", "JPN", "DEU")) %>%
+  select(country_name, year, WID_pct_gdp_corporate_debt, WID_pct_gdp_govt_debt) %>%
+  rename("Corporate Debt" = WID_pct_gdp_corporate_debt,
+         "Government Debt" = WID_pct_gdp_govt_debt) %>%
+  gather(key = "Type", value = "value", -country_name, -year) %>%
+  ggplot(aes(x = year, y = value)) +
+  geom_line(aes(linetype = Type)) +
+  labs(title = "Cross-National Debt Levels (% GDP)",
+       x = "Year",
+       y = "Percent of GDP (%)",
+       linetype = "",
+       caption = "
+       Data source(s): World Inequality Database") +
+  theme_bw() +
+  theme(text = element_text(face = 'bold'),
+        axis.text.x = element_text(angle = 35, hjust = 1),
+        panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_continuous(limits = c(1980, 2020), breaks = seq(1980, 2020, by = 10)) +
+  facet_wrap(vars(country_name))
+```
+
+***
+
+## Scatterplots
+
+```{r ineq_scatter, echo=FALSE, warning=FALSE, cache=TRUE, fig.asp=0.8}
+#--------------------------------------------------------------------------------------------------
+mega_combined_vars_df_SUBSET_added_vars %>%
+  filter(country_code_ISO3 %in% c("USA", "GBR", "FRA", 'DEU')) %>%
+  group_by(country_code_ISO3, year) %>%
+  mutate(pwt_human_capital_index = mean(pwt_human_capital_index),
+         WID_pre_tax_income_share_top_10pct = mean(WID_pre_tax_income_share_top_10pct)) %>%
+  distinct(country_code_ISO3, year, .keep_all = TRUE) %>%
+  ggplot(aes(x = pwt_human_capital_index,
+             y = WID_pre_tax_income_share_top_10pct,
+             color = country_name)) +
+  geom_point() +
+  labs(title = "Income Inequality vs. Human Capital Index",
+       subtitle = "Country-Year Averages (1960 - 2020)",
+       x = "Human Capital Index",
+       y = "Income Share of Top 10%",
+       caption = "
+       Data source(s): Penn World Table 10.0 & World Inequality Database") +
+  theme_bw() +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"),
+        legend.title = element_blank())
+#--------------------------------------------------------------------------------------------------
+```
+
+***
+
+
+
+
+
+
+
