@@ -1,4 +1,9 @@
 name: "my-website"
+output_dir: "_site"  
+output:  
+  html_document:  
+    self_contained: no  
+    theme: flatly  
 navbar:
   title: "My Website"
   left:
@@ -10,5 +15,4 @@ navbar:
       href: data_viz.html
     - text: "Influential Readings"
       href: readings.html
-theme: jekyll-theme-slate
       

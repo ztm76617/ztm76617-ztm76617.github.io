@@ -1,5 +1,6 @@
 ---
 title: "About Me"
+output: html_document
 ---
 
 I earned both my B.A. and M.A. in Political Science from the University of Georgia. For more information on my past coursework and teaching experience, you can view my CV here.

@@ -1,4 +1,5 @@
 ---
 title: "My Website"
+output: html_document
 ---
 Hello! Welcome to my website.

@@ -1,5 +1,6 @@
 ---
 title: "Data Visualizations"
+output: html_document
 ---
 
 ```{r include = FALSE}
