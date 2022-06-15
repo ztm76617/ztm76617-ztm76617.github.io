@@ -16,7 +16,7 @@ xfun::embed_file('welfare-paper.pdf')
 ```
 
 ```{css, echo=FALSE, cache=TRUE}
-element * {
+* {
   width: 300px;
   height: 100px;
   box-sizing: border-box;
