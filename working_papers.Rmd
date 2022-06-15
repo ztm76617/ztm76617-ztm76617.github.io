@@ -2,19 +2,21 @@
 title: "Working Papers"
 output: html_document
 ---
-<embed src="welfare-paper.pdf" type="application/pdf">
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.pos = 'h')
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<embed src="welfare-paper.pdf" type="application/pdf">
+
+```{css, echo=FALSE, cache=TRUE}
+* {
+  width: 300px;
+  height: 100px;
+  box-sizing: border-box;
+}
 ```
 
 ```{r download, echo=FALSE}
 xfun::embed_file('welfare-paper.pdf')
-```
-
-```{css, echo=FALSE, cache=TRUE}
-.textLayer .endOfContent.active {
-  --scale-select-container-width: 200px;
-  --zoom-factor: 0.1;
-}
 ```
