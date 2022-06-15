@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 <embed src="welfare-paper.pdf" type="application/pdf">
 
 ```{css, echo=FALSE, cache=TRUE}
-* {
+element * {
   width: 300px;
   height: 100px;
   box-sizing: border-box;
