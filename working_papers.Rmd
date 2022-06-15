@@ -13,7 +13,7 @@ xfun::embed_file('welfare-paper.pdf')
 ```
 
 ```{css, echo=FALSE, cache=TRUE}
-* element {
+body {
   --scale-select-container-width: 200px;
   --zoom-factor: 0.1;
 }
