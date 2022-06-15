@@ -20,3 +20,7 @@ element * {
 ```{r download, echo=FALSE}
 xfun::embed_file('welfare-paper.pdf')
 ```
+
+```{r knitr, echo=FALSE, cache=TRUE}
+knitr::include_graphics("welfare-paper.pdf")
+```
