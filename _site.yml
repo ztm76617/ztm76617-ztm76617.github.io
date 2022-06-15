@@ -11,9 +11,8 @@ navbar:
     - text: "Influential Readings"
       href: readings.html
 output_dir: "docs"  
-output:  
+output:
   html_document:  
     self_contained: no  
     theme: sandstone
-css: syles.css
       
