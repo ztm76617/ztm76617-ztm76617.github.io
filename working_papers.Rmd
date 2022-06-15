@@ -1,0 +1,13 @@
+---
+title: "Working Papers"
+output: html_document
+---
+<embed src="welfare-paper.pdf" type="application/pdf">
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.pos = 'h')
+```
+
+```{r download, echo=FALSE}
+xfun::embed_file('welfare-paper.pdf')
+```

@@ -1,11 +1,11 @@
 name: "my-website"
 navbar:
-  title: "My Website"
+  title: "Zachary Thomas McDowell's Personal Website"
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Working Papers"
+      href: working_papers.html
     - text: "Data Visualizations"
       href: data_viz.html
     - text: "Influential Readings"
