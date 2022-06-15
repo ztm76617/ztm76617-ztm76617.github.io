@@ -8,7 +8,7 @@ nocite: |
 
 ```{css, echo=FALSE, cache=TRUE}
 div.csl-bib-body {
-  font-size: 20px;
+  font-size: 18px;
 }
 ```
 
