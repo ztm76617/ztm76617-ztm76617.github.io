@@ -1,6 +1,7 @@
 ---
 title: "Influential Readings"
 bibliography: mybib.bib
+css: syles.css
 nocite: |
   @acemoglu2006; @acemoglu2006a; @bartels2008; @beck1995; @beck2001; @beck2011; @bell2015; @beramendi2007; @blyth2013; @busemeyer2020a; @chesnais2016; @dumenil2013; @dumenil2018; @ellis2014; @faricy2015; @fernandez-albertos2015; @gilens2012; @golden2013; @hacker2004b; @harvey2011; @harvey2015; @klarman2016; @kliman2012; @kliman2015b; @kotz2009; @lapavitsas2012; @lupu2011; @martin2012a; @mccarty2013; @mccarty2016; @milanovic2016; @moene2001; @piketty1995; @piketty2014; @piketty2017; @stockhammer2016; @taber2006; @thelen2012; @toussaint2019; @zucman2015; @zucman2019
 ---
