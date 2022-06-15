@@ -131,6 +131,41 @@ mega_combined_vars_df_SUBSET_added_vars %>%
 
 ***
 
+```{r ineq_plot, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+#--------------------------------------------------------------------------------
+mega_combined_vars_df_SUBSET_added_vars %>%
+  group_by(year) %>%
+  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR",
+                                  "JPN", "DEU", "FRA", "ITA")) %>%
+  mutate(WID_pre_tax_income_share_bottom_50pct = mean(WID_pre_tax_income_share_bottom_50pct, na.rm = TRUE),
+         WID_pre_tax_income_share_top_1pct = mean(WID_pre_tax_income_share_top_1pct, na.rm = TRUE)) %>%
+  distinct(year, .keep_all = TRUE) %>%
+  select(year, WID_pre_tax_income_share_top_1pct, WID_pre_tax_income_share_bottom_50pct) %>%
+  rename("Bottom 50%" = WID_pre_tax_income_share_bottom_50pct,
+         "Top 1%" = WID_pre_tax_income_share_top_1pct) %>%
+  gather(key = "variable", value = "value", -year) %>%
+  ggplot(aes(x = year, y = value)) +
+  geom_line(aes(linetype = variable)) +
+  theme_bw() +
+  labs(x = "Year",
+       y = "Share of National Income (%)",
+       caption = "
+       Data source(s): World Inequality Database",
+       title = "Average National Income Share in G7 Countries") +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.title = element_blank(),
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_continuous(limits = c(1970, 2020), breaks = seq(1970, 2020, by = 10))
+
+```
+***
+
 ```{r debt, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
  mega_combined_vars_df_SUBSET_added_vars %>%
   filter(country_code_ISO3 %in% c("CAN", "USA", "GBR", "FRA", "JPN", "DEU")) %>%
