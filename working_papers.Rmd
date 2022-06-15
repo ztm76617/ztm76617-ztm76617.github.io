@@ -14,11 +14,3 @@ knitr::include_graphics("welfare-paper.pdf")
 ```{r download, echo=FALSE}
 xfun::embed_file('welfare-paper.pdf')
 ```
-
-```{css, echo=FALSE, cache=TRUE}
-* {
-  width: 300px;
-  height: 100px;
-  box-sizing: border-box;
-}
-```
