@@ -7,7 +7,13 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<embed src="welfare-paper.pdf" type="application/pdf">
+```{r knitr, echo=FALSE, cache=TRUE}
+knitr::include_graphics("welfare-paper.pdf")
+```
+
+```{r download, echo=FALSE}
+xfun::embed_file('welfare-paper.pdf')
+```
 
 ```{css, echo=FALSE, cache=TRUE}
 element * {
@@ -15,12 +21,4 @@ element * {
   height: 100px;
   box-sizing: border-box;
 }
-```
-
-```{r download, echo=FALSE}
-xfun::embed_file('welfare-paper.pdf')
-```
-
-```{r knitr, echo=FALSE, cache=TRUE}
-knitr::include_graphics("welfare-paper.pdf")
 ```
