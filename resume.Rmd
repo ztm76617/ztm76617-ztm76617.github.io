@@ -3,16 +3,34 @@ title: "Resume/CV"
 output: html_document
 ---
 
+<div class="post">
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r knitr, echo=FALSE, cache=TRUE}
+***
+## Resume
+```{r resume, echo=FALSE, cache=TRUE}
 knitr::include_graphics("academic_resume v2.1.pdf")
 knitr::include_graphics("academic CV.pdf")
 ```
 
+***
+
+## CV
+```{r cv, echo=FALSE, cache=TRUE}
+knitr::include_graphics("academic CV.pdf")
+```
+
+
 ```{css, echo=FALSE}
+.post {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 html body div.container-fluid.main-container p embed {
   width: 600px;
   height: 700px;
