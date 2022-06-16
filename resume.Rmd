@@ -1,0 +1,22 @@
+---
+title: "Resume/CV"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r knitr, echo=FALSE, cache=TRUE}
+knitr::include_graphics("academic_resume v2.1.pdf")
+knitr::include_graphics("academic CV.pdf")
+```
+
+```{css, echo=FALSE}
+html body div.container-fluid.main-container p embed {
+  width: 600px;
+  height: 700px;
+  border: 1px solid #c3c3c3;
+}
+```
+
