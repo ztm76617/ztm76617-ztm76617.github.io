@@ -7,17 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r knitr, echo=FALSE, cache=TRUE, out.width="200px"}
-knitr::include_graphics("Whitagram-Image.JPG")
-```
-
-
 ```{css, echo=FALSE, cache=TRUE}
-
-html body div.container-fluid.main-container p img {
-  align-content: center;
-}
-
 html body div.container-fluid.main-container p {
   font-size: 18px;
 }

@@ -140,5 +140,51 @@ tax_expenditure_distriibution_df %>%
 
 ggsave("tax_expend_dist2.png", width = 6, height = 5)
 #--------------------------------------------------------------------------------
+specie <- c(rep("sorgho" , 3) , rep("poacee" , 3) , rep("banana" , 3) , rep("triticum" , 3) )
+condition <- rep(c("normal" , "stress" , "Nitrogen") , 4)
+value <- abs(rnorm(12 , 0 , 15))
+data <- data.frame(specie,condition,value)
+
+# Grouped
+ggplot(data, aes(fill=condition, y=value, x=specie)) + 
+  geom_bar(position="dodge", stat="identity")
+
+
+#--------------------------------------------------------------------------------
+names(new_mega_edits_df)
+
+new_mega_edits_df %>%
+  select(contains("debt")) %>%
+  names()
+
+new_mega_edits_df %>%
+  filter(iso3 %in% c("USA", "GBR", "DEU", "JPN"),
+         year == 2015) %>%
+  select(country_name,
+         pct_gdp_corporate_debt,
+         pct_gdp_govt_debt,
+         pct_gdp_total_household_debt) %>%
+  rename("Corporate" = pct_gdp_corporate_debt,
+         "Household" = pct_gdp_total_household_debt,
+         "Government" = pct_gdp_govt_debt) %>%
+  gather(key = "debt", value = "value", -country_name) %>%
+  ggplot(aes(fill=debt, y=value, x=country_name)) + 
+  geom_bar(position="dodge", stat="identity") +
+  theme_bw() +
+  labs(x = "Country",
+       y = "Debt Total (% GDP)",
+       title = "Cross-National Debt Totals (2015)",
+       caption = "Data Source(s): Global Debt Database") +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "right",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"),
+        legend.title = element_blank())
+
+
+
 
 

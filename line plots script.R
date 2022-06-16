@@ -128,39 +128,31 @@ mega_combined_vars_df_SUBSET_added_vars %>%
   facet_wrap(vars(country_code_ISO3))
 #--------------------------------------------------------------------------------
 mega_combined_vars_df_SUBSET_added_vars %>%
-  select(country_code_ISO3, year,
-         pwt_real_gdp_growth) %>%
-  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR", "FRA", "CHN", "JPN")) %>%
-  rename("GDP Growth (YOY)" = pwt_real_gdp_growth) %>%
-  gather(key = "Legend", value = "value", -country_code_ISO3, -year) %>%
+  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR", "FRA", "DEU", "JPN")) %>%
+  select(country_name, year,
+         pwt_gdp_growth_2017_ppp_5yr_MA) %>%
+  rename("GDP Growth (5yr MA)" = pwt_gdp_growth_2017_ppp_5yr_MA) %>%
+  gather(key = "gdp", value = "value", -country_name, -year) %>%
   ggplot(aes(x = year, y = value)) +
-  geom_line(aes(linetype = `Legend`)) +
-  theme_linedraw() +
+  theme_bw() +
   geom_smooth(method = 'lm') +
-  geom_line(aes(color = `Legend`), size = 1) +
-  labs(y = "",
+  geom_line() +
+  labs(y = "Percent (%)",
        x = "Year",
-       title = "Comparing Economic Conditions Across Countries",
+       title = "GDP Growth (5yr Moving Average)",
+       subtitle = "G6 Countries",
        caption = "Data source(s): Penn World Tables") +
-  theme(axis.text.x = element_text(angle=50, hjust=1),
-        text = element_text(size=14, face = 'bold'),
-        axis.text = element_text(size = 12),
-        axis.title = element_text(size = 15),
+  theme(axis.text.x = element_text(angle=35, hjust=1),
+        text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
-        axis.ticks.length.y = unit(.25, "cm"),
-        axis.ticks.length.x = unit(.25, "cm"),
-        plot.caption = element_text(hjust = 0, face = "bold.italic", size=12),
+        plot.caption = element_text(hjust = 0, face = "bold.italic"),
         plot.caption.position = "plot",
-        plot.margin = unit(c(0.5,0.5,0.75,0.5), "cm"),
-        legend.position="right",
-        strip.text.x = element_text(size = 15, face = "bold"),
-        legend.title = element_text(size=12),
-        legend.text = element_text(size=10),
+        legend.position="bottom",
+        strip.text.x = element_text(face = "bold"),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black")) +
   scale_x_continuous(limits = c(1960, 2020), breaks = seq(1960, 2020, by = 10)) +
-  scale_colour_brewer(palette = "Set1") +
-  facet_wrap(vars(country_code_ISO3))
+  facet_wrap(vars(country_name))
 #--------------------------------------------------------------------------------
 mega_combined_vars_df_SUBSET_added_vars %>%
   filter(country_code_ISO3 %in% c("USA", "GBR", "FRA", "JPN")) %>%

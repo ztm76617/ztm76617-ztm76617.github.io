@@ -60,7 +60,71 @@ tax_expenditure_distriibution_df_v2 %>%
 ```
 
 ***
+
+```{r debt_bar, cache=TRUE}
+new_mega_edits_df %>%
+  filter(iso3 %in% c("USA", "GBR", "DEU", "JPN"),
+         year == 2015) %>%
+  select(country_name,
+         pct_gdp_corporate_debt,
+         pct_gdp_govt_debt,
+         pct_gdp_total_household_debt) %>%
+  rename("Corporate" = pct_gdp_corporate_debt,
+         "Household" = pct_gdp_total_household_debt,
+         "Government" = pct_gdp_govt_debt) %>%
+  gather(key = "debt", value = "value", -country_name) %>%
+  ggplot(aes(fill=debt, y=value, x=country_name)) + 
+  geom_bar(position="dodge", stat="identity") +
+  theme_bw() +
+  labs(x = "Country",
+       y = "Debt Total (% GDP)",
+       title = "Cross-National Debt Totals (2015)",
+       caption = "Data Source(s): Global Debt Database") +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "right",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"),
+        legend.title = element_blank())
+#--------------------------------------------------------------------------------
+```
+
+***
 ## Lineplots
+
+
+```{r gdp_growth, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+mega_combined_vars_df_SUBSET_added_vars %>%
+  filter(country_code_ISO3 %in% c("CAN", "USA", "GBR", "FRA", "DEU", "JPN")) %>%
+  select(country_name, year,
+         pwt_gdp_growth_2017_ppp_5yr_MA) %>%
+  rename("GDP Growth (5yr MA)" = pwt_gdp_growth_2017_ppp_5yr_MA) %>%
+  gather(key = "gdp", value = "value", -country_name, -year) %>%
+  ggplot(aes(x = year, y = value)) +
+  theme_bw() +
+  geom_smooth(method = 'lm') +
+  geom_line() +
+  labs(y = "Percent (%)",
+       x = "Year",
+       title = "GDP Growth (5yr Moving Average)",
+       subtitle = "G6 Countries",
+       caption = "Data source(s): Penn World Tables") +
+  theme(axis.text.x = element_text(angle=35, hjust=1),
+        text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        plot.caption = element_text(hjust = 0, face = "bold.italic"),
+        plot.caption.position = "plot",
+        legend.position="bottom",
+        strip.text.x = element_text(face = "bold"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_continuous(limits = c(1960, 2020), breaks = seq(1960, 2020, by = 10)) +
+  facet_wrap(vars(country_name))
+```
+
+***
 
 ```{r inequality_plot, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
 #--------------------------------------------------------------------------------
@@ -228,6 +292,31 @@ mega_combined_vars_df_SUBSET_added_vars %>%
         legend.box.background = element_rect(colour = "black"),
         legend.title = element_blank())
 #--------------------------------------------------------------------------------------------------
+```
+
+***
+
+```{r union_scatter1, echo=FALSE, warning=FALSE, cache=TRUE, fig.asp=0.8}
+new_mega_edits_df %>%
+  filter(iso3 %in% c("USA", "GBR", "FRA", 'DEU', "JPN", "CAN")) %>%
+  ggplot(aes(x = oecd_union_density,
+             y = pct_gdp_labor_compensation)) +
+  geom_point(size = 0.75) +
+  labs(title = "Union Density vs. Labor Comnpensation (1960-2020)",
+       x = "Union Density (% Working Population)",
+       y = "Labor Share of Comnpensation (% GDP)",
+       caption = "
+       Data source(s): Comparative Politics Data Set") +
+  theme_bw() +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black"),
+        legend.title = element_blank()) +
+  facet_wrap(vars(country_name))
 ```
 
 ***
