@@ -11,17 +11,13 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::include_graphics("welfare-paper.pdf")
 ```
 
-```{r download, echo=FALSE}
-xfun::embed_file('welfare-paper.pdf')
-```
-
 ```{css, echo=FALSE}
-element :root {
-  --pdfViewer-padding-bottom: 10;
-  --page-margin: 10px auto -30px;
-  --page-border: 9px solid transparent;
-  --spreadHorizontalWrapped-margin-LR: -10px;
-  --zoom-factor: 1;
+html body div.container-fluid.main-container p embed {
+  width: 450px;
+  height: 600px;
+  border: 1px solid #c3c3c3;
+  flex-wrap: wrap;
+  align-content: center;
 }
 ```
 

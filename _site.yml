@@ -1,6 +1,6 @@
 name: "my-website"
 navbar:
-  title: "Zachary Thomas McDowell's Personal Website"
+  title: "Zachary Thomas McDowell"
   left:
     - text: "Home"
       href: index.html
