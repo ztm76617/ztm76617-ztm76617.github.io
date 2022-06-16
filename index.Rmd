@@ -3,13 +3,28 @@ title: "Hello! Welcome to My Website"
 output: html_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r knitr, echo=FALSE, cache=TRUE, out.width="200px"}
+knitr::include_graphics("Whitagram-Image.JPG")
+```
+
+
 ```{css, echo=FALSE, cache=TRUE}
 .main-container {
   font-size: 18px;
-  max-width: 750px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-container p {
+  margin: 10px 150px 10px;
 }
 ```
 
-My name is Zachary Thomas McDowell. I earned both my B.A. and M.A. in Political Science from the University of Georgia. For more information on my past coursework and teaching experience, you can view my CV on this site on the page labeled "Resume/CV".
+<p class="text-right" style="background-color: aliceblue">My name is Zachary Thomas McDowell. I earned both my B.A. and M.A. in Political Science from the University of Georgia. For more information on my past coursework and teaching experience, you can view my CV on this site on the page labeled "Resume/CV".
 
-My research interests involve time-series econometrics, international and comparative political economy, the politics of income inequality and redistribution, causes and consequences of economic crises, and general economic history. I've included a number of articles and books on the "Influential Readings" page that provides an overview of the types of research that I regularly engage with.
+My research interests involve time-series econometrics, international and comparative political economy, the politics of income inequality and redistribution, causes and consequences of economic crises, and general economic history. I've included a number of articles and books on the "Influential Readings" page that provides an overview of the types of research that I regularly engage with.</p>
