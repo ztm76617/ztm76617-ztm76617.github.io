@@ -4,6 +4,8 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "Resume/CV"
+      href: resume.html
     - text: "Working Papers"
       href: working_papers.html
     - text: "Data Visualizations"
