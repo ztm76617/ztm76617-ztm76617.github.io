@@ -14,3 +14,15 @@ knitr::include_graphics("welfare-paper.pdf")
 ```{r download, echo=FALSE}
 xfun::embed_file('welfare-paper.pdf')
 ```
+
+```{css, echo=FALSE}
+en-markup-loading-spinner img {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    animation-name: rotateSpinner;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+```
