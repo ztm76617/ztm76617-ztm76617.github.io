@@ -16,9 +16,12 @@ xfun::embed_file('welfare-paper.pdf')
 ```
 
 ```{css, echo=FALSE}
-.pdfViewer .page {
-  margin: 1px auto -3px auto !important;
-  border: 1px dashed gray !important;
-} 
+element :root {
+  --pdfViewer-padding-bottom: 10;
+  --page-margin: 10px auto -30px;
+  --page-border: 9px solid transparent;
+  --spreadHorizontalWrapped-margin-LR: -10px;
+  --zoom-factor: 1;
+}
 ```
 

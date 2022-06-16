@@ -164,6 +164,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
   scale_x_continuous(limits = c(1970, 2020), breaks = seq(1970, 2020, by = 10))
 
 ```
+
 ***
 
 ```{r debt, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
