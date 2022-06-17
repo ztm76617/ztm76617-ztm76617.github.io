@@ -1,7 +1,6 @@
 ---
 title: "Homepage"
-output: 
-  distill::distill_article: default
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
