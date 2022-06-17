@@ -10,15 +10,23 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{css, echo=FALSE, cache=TRUE}
 html body div.container-fluid.main-container p {
   text-align: left;
-  font: 16px Georgia, serif;
+  font: 20px Georgia, serif;
   padding-right: 0px;
   padding-left: 0px;
 }
+
+html body div.container-fluid.main-container p img{
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 ```
 
 ::: {.floatting}
 
-```{r out.width='50%', out.extra='style="float:left; padding:10px"', echo=FALSE}
+```{r out.width='50%', out.extra='style="float:top; padding:10px"', echo=FALSE}
 knitr::include_graphics("portrait.JPG")
 ```
 
