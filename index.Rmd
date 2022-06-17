@@ -1,5 +1,5 @@
 ---
-title: "Welcome"
+title: ""
 output: html_document
 ---
 
@@ -7,9 +7,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<img src="Whitagram-Image.JPG">
+
 ```{css, echo=FALSE, cache=TRUE}
 html body div.container-fluid.main-container p {
-  font-size: 18px;
+  font-size: 20px;
+  text-align: justify;
 }
 
 ```
@@ -17,5 +20,7 @@ html body div.container-fluid.main-container p {
 My name is Zachary Thomas McDowell. I earned both my B.A. and M.A. in Political Science from the University of Georgia. For more information on my past coursework and teaching experience, you can view my CV on this site on the page labeled "Resume/CV".
 
 My research interests involve time-series econometrics, international and comparative political economy, the politics of income inequality and redistribution, causes and consequences of economic crises, and general economic history. I've included a number of articles and books on the "Influential Readings" page that provides an overview of the types of research that I regularly engage with.
+
+This website exists to host my various professional materials and the research projects I'm working on.
 
 
