@@ -109,7 +109,7 @@ map_dfr(c("SMU11000000500000003",
         units = "pch") %>%
   mutate(date = ymd(date),
          series_id = case_when(series_id == "SMU11000000500000003" ~ "Avg. Hourly Earnings",
-                               series_id == "DCUCSFRCONDOSMSAMID" ~ "Zillow Home Value Index)",
+                               series_id == "DCUCSFRCONDOSMSAMID" ~ "Zillow Home Value Index",
                                series_id == "LBSSA11" ~ "Labor Force Participation Rate")) %>%
   filter(date >= "2019-01-01") %>%
   ggplot(mapping = aes(x = date, y = value)) +
