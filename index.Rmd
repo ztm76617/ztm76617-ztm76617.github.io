@@ -9,35 +9,39 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{css, echo=FALSE, cache=TRUE}
 html body div.container-fluid.main-container p {
-  text-align: left;
-  font: 20px Georgia, serif;
+  text-align: justify;
+  font: 15px;
   padding-right: 0px;
   padding-left: 0px;
 }
 
 html body div.container-fluid.main-container p img{
  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+ margin-left: auto;
+ margin-right: auto;
+ width: 50%;
 }
 
 ```
 
-::: {.floatting}
+::: floatting
 
-```{r out.width='50%', out.extra='style="float:top; padding:10px"', echo=FALSE}
+```{r out.width='50%', out.extra='style="float:left; padding:50px"', echo=FALSE}
 knitr::include_graphics("portrait.JPG")
 ```
 
 :::
 
-My name is Zachary Thomas McDowell. I earned both my B.A. and M.A. in Political Science from the University of Georgia. For more information on my past coursework and teaching experience, you can view my CV on this site on the page labeled "Resume/CV".
+My name is Zachary Thomas McDowell.
 
-My research interests involve time-series econometrics, international and comparative political economy, the politics of income inequality and redistribution, causes and consequences of economic crises, and general economic history. I've included a number of articles and books on the "Influential Readings" page that provides an overview of the types of research that I regularly engage with.
+I earned both my BA and MA in Political Science from the University of Georgia. This website exists to host my various professional materials and documents associated with both past and ongoing research projects.
 
-This website exists to host my various professional materials and the research projects I'm working on.
+My research interests involve the following:
 
+-   Time-Series Econometrics
+-   International & Comparative Political Economy
+-   The Politics of Income Inequality & Redistribution
+-   The Causes and Consequences of Economic Crises
+-   General Economic History
 
-
-
+I've included a number of academic articles and books on the "Influential Readings" page to provide an overview of the types of research that I regularly engage with.
