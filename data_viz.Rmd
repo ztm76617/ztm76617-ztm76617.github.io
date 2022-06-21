@@ -97,7 +97,7 @@ new_mega_edits_df %>%
 
 ## Lineplots
 
-```{r wash_plot, echo=FALSE, warning=FALSE, cache=TRUE}
+```{r wash_plot, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.6}
 #--------------------------------------------------------------------------------------
 # fedr ggplot
 #--------------------------------------------------------------------------------------
@@ -115,21 +115,22 @@ map_dfr(c("SMU11000000500000003",
   ggplot(mapping = aes(x = date, y = value)) +
   geom_line() +
   geom_smooth(method = "loess") +
-  theme_bw(base_size = 8) +
+  theme_bw() +
   labs(x = "Date",
        y = "Percent Change (%)",
        title = "Washington, DC Area",
        subtitle = "Monthly Economic Data (2019 - 2022)",
        caption = "Data Source(s): Federal Reserve Economic Data (FRED)") +
-  theme(text = element_text(face = 'bold'),
+  theme(axis.text.x = element_text(angle=35, hjust=1),
+        text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
-        plot.caption = element_text(hjust = 0, face = "bold.italic"),
+        plot.caption = element_text(hjust = 0, face = "bold"),
         plot.caption.position = "plot",
         legend.position="bottom",
         strip.text.x = element_text(face = "bold"),
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black")) +
-  facet_grid(vars(series_id))
+  facet_wrap(vars(series_id))
 ```
 
 ***
@@ -153,7 +154,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
   theme(axis.text.x = element_text(angle=35, hjust=1),
         text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
-        plot.caption = element_text(hjust = 0, face = "bold.italic"),
+        plot.caption = element_text(hjust = 0, face = "bold"),
         plot.caption.position = "plot",
         legend.position="bottom",
         strip.text.x = element_text(face = "bold"),
@@ -234,7 +235,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
 
 ***
 
-```{r ineq_plot, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+```{r ineq_plot, echo=FALSE, message=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.75}
 #--------------------------------------------------------------------------------
 mega_combined_vars_df_SUBSET_added_vars %>%
   group_by(year) %>%

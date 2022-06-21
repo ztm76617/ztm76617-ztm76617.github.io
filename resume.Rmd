@@ -10,7 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ***
+
 ## Resume
+
 ```{r resume, echo=FALSE, cache=TRUE}
 knitr::include_graphics("academic_resume v2.1.pdf")
 ```
@@ -18,6 +20,7 @@ knitr::include_graphics("academic_resume v2.1.pdf")
 ***
 
 ## CV
+
 ```{r cv, echo=FALSE, cache=TRUE}
 knitr::include_graphics("academic CV.pdf")
 ```
@@ -37,3 +40,4 @@ html body div.container-fluid.main-container p embed {
 }
 ```
 
+***
