@@ -13,6 +13,8 @@ library(tidyverse)
 library(interactions)
 library(readxl)
 library(captioner)
+library(fredr)
+library(lubridate)
 #---------------------------------------------------------------------
 # Load Data
 #---------------------------------------------------------------------
@@ -92,8 +94,45 @@ new_mega_edits_df %>%
 ```
 
 ***
+
 ## Lineplots
 
+```{r wash_plot, echo=FALSE, warning=FALSE, cache=TRUE}
+#--------------------------------------------------------------------------------------
+# fedr ggplot
+#--------------------------------------------------------------------------------------
+map_dfr(c("SMU11000000500000003",
+          "DCUCSFRCONDOSMSAMID",
+          "LBSSA11"),
+        fredr,
+        frequency = "m",
+        units = "pch") %>%
+  mutate(date = ymd(date),
+         series_id = case_when(series_id == "SMU11000000500000003" ~ "Avg. Hourly Earnings",
+                               series_id == "DCUCSFRCONDOSMSAMID" ~ "Zillow Home Value Index)",
+                               series_id == "LBSSA11" ~ "Labor Force Participation Rate")) %>%
+  filter(date >= "2019-01-01") %>%
+  ggplot(mapping = aes(x = date, y = value)) +
+  geom_line() +
+  geom_smooth(method = "loess") +
+  theme_bw(base_size = 8) +
+  labs(x = "Date",
+       y = "Percent Change (%)",
+       title = "Washington, DC Area",
+       subtitle = "Monthly Economic Data (2019 - 2022)",
+       caption = "Data Source(s): Federal Reserve Economic Data (FRED)") +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        plot.caption = element_text(hjust = 0, face = "bold.italic"),
+        plot.caption.position = "plot",
+        legend.position="bottom",
+        strip.text.x = element_text(face = "bold"),
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  facet_grid(vars(series_id))
+```
+
+***
 
 ```{r gdp_growth, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
 mega_combined_vars_df_SUBSET_added_vars %>%
