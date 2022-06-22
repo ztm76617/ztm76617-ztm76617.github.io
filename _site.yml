@@ -9,7 +9,7 @@ navbar:
     - text: "Resume/CV"
       menu:
       - text: "Resume"
-        href: "academic_resume v2.1.pdf"
+        href: "academic_resume v2.pdf"
       - text: "CV"
         href: "academic CV.pdf"
     - text: "Working Papers"

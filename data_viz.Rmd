@@ -80,7 +80,8 @@ new_mega_edits_df %>%
   labs(x = "Country",
        y = "Debt Total (% GDP)",
        title = "Cross-National Debt Totals (2015)",
-       caption = "Data Source(s): Global Debt Database") +
+       caption = "
+       Data Source(s): Global Debt Database") +
   theme(text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
         plot.caption = element_text(hjust = 0),
@@ -94,7 +95,7 @@ new_mega_edits_df %>%
 
 ***
 
-```{r wash_plot3, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=6, fig.asp=0.8}
+```{r wash_plot3, echo=FALSE, warning=FALSE, cache=TRUE}
 #--------------------------------------------------------------------------------------
 map_dfr(c("SMS11000009091000001",
           "DCLEIH",
@@ -112,15 +113,19 @@ map_dfr(c("SMS11000009091000001",
   theme_bw() +
   labs(x = "",
        y = "Number of Employees (Thousands)",
-       title = "Washington, DC Area (May 2022)") +
-  theme(text = element_text(face = 'bold'))
+       title = "Washington, DC Area (May 2022)",
+       caption = "
+       Data Source(s): Federal Researve Economic Data (FRED)") +
+  theme(text = element_text(face = 'bold'),
+        plot.caption = element_text(hjust = 0, face = "bold"),
+        plot.caption.position = "plot")
 
 ```
 
 ***
 ## Lineplots
 
-```{r wash_plot, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
+```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE}
 #--------------------------------------------------------------------------------------
 # fedr ggplot
 #--------------------------------------------------------------------------------------
@@ -142,20 +147,24 @@ map_dfr(c("SMU11000000500000003",
   labs(x = "Month-Year",
        y = "Percent Change (%)",
        title = "Washington, DC Area",
-       subtitle = "Monthly Economic Data (2019 - 2022)") +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, size = 8),
+       subtitle = "Monthly Economic Data (2019 - 2022)",
+       caption = "
+       Data Source(s): Federal Researve Economic Data (FRED)") +
+  theme(axis.text.x = element_text(angle = 35, hjust = 1),
         text = element_text(face = 'bold'),
+        plot.caption = element_text(hjust = 0, face = "bold"),
+        plot.caption.position = "plot",
         legend.position = "bottom",
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black")) +
   scale_x_date(date_labels = "%b-%Y",
-               date_breaks = "4 month") +
+               date_breaks = "5 month") +
   facet_wrap(vars(series_id))
 ```
 
 ***
 
-```{r wash_plot2, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=6, fig.asp=0.8}
+```{r wash_plot2, echo=FALSE, warning=FALSE, cache=TRUE}
 map_dfr(c("DCBPPRIVSA"),
         fredr,
         frequency = "m",
@@ -170,9 +179,13 @@ map_dfr(c("DCBPPRIVSA"),
   labs(x = "Month-Year",
        y = "Monthly Change",
        title = "Washington, DC Area",
-       subtitle = "Monthly Economic Data (2019 - 2022)") +
-  theme(axis.text.x = element_text(angle = 35, hjust = 1, size = 8),
+       subtitle = "Monthly Economic Data (2019 - 2022)",
+       caption = "
+       Data Source(s): Federal Researve Economic Data (FRED)") +
+  theme(axis.text.x = element_text(angle = 35, hjust = 1),
         text = element_text(face = 'bold'),
+        plot.caption = element_text(hjust = 0, face = "bold"),
+        plot.caption.position = "plot",
         legend.position = "bottom",
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black")) +
@@ -200,7 +213,8 @@ mega_combined_vars_df_SUBSET_added_vars %>%
        x = "Year",
        title = "GDP Growth (5yr Moving Average)",
        subtitle = "G6 Countries",
-       caption = "Data source(s): Penn World Tables") +
+       caption = "
+       Data source(s): Penn World Tables") +
   theme(axis.text.x = element_text(angle=35, hjust=1),
         text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
