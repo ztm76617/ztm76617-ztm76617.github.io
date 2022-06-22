@@ -1,390 +1,918 @@
-<!DOCTYPE html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<html>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <style type="text/css">body {font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, serif;}</style>
 
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <title>Zachary Thomas McDowell</title>
+
+    
+          <!--radix_placeholder_navigation_in_header-->
+          <meta name="distill:offset" content=""/>
+
+          <script type="application/javascript">
+
+            window.headroom_prevent_pin = false;
+
+            window.document.addEventListener("DOMContentLoaded", function (event) {
+
+              // initialize headroom for banner
+              var header = $('header').get(0);
+              var headerHeight = header.offsetHeight;
+              var headroom = new Headroom(header, {
+                tolerance: 5,
+                onPin : function() {
+                  if (window.headroom_prevent_pin) {
+                    window.headroom_prevent_pin = false;
+                    headroom.unpin();
+                  }
+                }
+              });
+              headroom.init();
+              if(window.location.hash)
+                headroom.unpin();
+              $(header).addClass('headroom--transition');
+
+              // offset scroll location for banner on hash change
+              // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+              window.addEventListener("hashchange", function(event) {
+                window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+              });
+
+              // responsive menu
+              $('.distill-site-header').each(function(i, val) {
+                var topnav = $(this);
+                var toggle = topnav.find('.nav-toggle');
+                toggle.on('click', function() {
+                  topnav.toggleClass('responsive');
+                });
+              });
+
+              // nav dropdowns
+              $('.nav-dropbtn').click(function(e) {
+                $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+                $(this).parent().siblings('.nav-dropdown')
+                   .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+              });
+              $("body").click(function(e){
+                $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+              });
+              $(".nav-dropdown").click(function(e){
+                e.stopPropagation();
+              });
+            });
+          </script>
+
+          <style type="text/css">
+
+          /* Theme (user-documented overrideables for nav appearance) */
+
+          .distill-site-nav {
+            color: rgba(255, 255, 255, 0.8);
+            background-color: #0F2E3D;
+            font-size: 15px;
+            font-weight: 300;
+          }
+
+          .distill-site-nav a {
+            color: inherit;
+            text-decoration: none;
+          }
+
+          .distill-site-nav a:hover {
+            color: white;
+          }
+
+          @media print {
+            .distill-site-nav {
+              display: none;
+            }
+          }
+
+          .distill-site-header {
+
+          }
+
+          .distill-site-footer {
+
+          }
 
 
+          /* Site Header */
+
+          .distill-site-header {
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 3;
+          }
+
+          .distill-site-header .nav-left {
+            display: inline-block;
+            margin-left: 8px;
+          }
+
+          @media screen and (max-width: 768px) {
+            .distill-site-header .nav-left {
+              margin-left: 0;
+            }
+          }
 
 
-<title>Homepage</title>
+          .distill-site-header .nav-right {
+            float: right;
+            margin-right: 8px;
+          }
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+          .distill-site-header a,
+          .distill-site-header .title {
+            display: inline-block;
+            text-align: center;
+            padding: 14px 10px 14px 10px;
+          }
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+          .distill-site-header .title {
+            font-size: 18px;
+            min-width: 150px;
+          }
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
+          .distill-site-header .logo {
+            padding: 0;
+          }
 
+          .distill-site-header .logo img {
+            display: none;
+            max-height: 20px;
+            width: auto;
+            margin-bottom: -4px;
+          }
 
-
-
-
-
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
+          .distill-site-header .nav-image img {
+            max-height: 18px;
+            width: auto;
+            display: inline-block;
+            margin-bottom: -3px;
+          }
 
 
 
+          @media screen and (min-width: 1000px) {
+            .distill-site-header .logo img {
+              display: inline-block;
+            }
+            .distill-site-header .nav-left {
+              margin-left: 20px;
+            }
+            .distill-site-header .nav-right {
+              margin-right: 20px;
+            }
+            .distill-site-header .title {
+              padding-left: 12px;
+            }
+          }
 
-</head>
 
-<body>
+          .distill-site-header .nav-toggle {
+            display: none;
+          }
+
+          .nav-dropdown {
+            display: inline-block;
+            position: relative;
+          }
+
+          .nav-dropdown .nav-dropbtn {
+            border: none;
+            outline: none;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 16px 10px;
+            background-color: transparent;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            margin: 0;
+            margin-top: 1px;
+            z-index: 2;
+          }
+
+          .nav-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            border: 1px solid rgba(0,0,0,0.15);
+            border-radius: 4px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+            margin-top: 2px;
+            white-space: nowrap;
+            padding-top: 4px;
+            padding-bottom: 4px;
+          }
+
+          .nav-dropdown-content hr {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+          }
+
+          .nav-dropdown-active {
+            display: block;
+          }
+
+          .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+            color: black;
+            padding: 6px 24px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+          }
+
+          .nav-dropdown-content .nav-dropdown-header {
+            display: block;
+            padding: 5px 24px;
+            padding-bottom: 0;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #999999;
+            white-space: nowrap;
+          }
+
+          .nav-dropdown:hover .nav-dropbtn {
+            color: white;
+          }
+
+          .nav-dropdown-content a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+
+          .nav-right .nav-dropdown-content {
+            margin-left: -45%;
+            right: 0;
+          }
+
+          @media screen and (max-width: 768px) {
+            .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+            .distill-site-header a.nav-toggle {
+              float: right;
+              display: block;
+            }
+            .distill-site-header .title {
+              margin-left: 0;
+            }
+            .distill-site-header .nav-right {
+              margin-right: 0;
+            }
+            .distill-site-header {
+              overflow: hidden;
+            }
+            .nav-right .nav-dropdown-content {
+              margin-left: 0;
+            }
+          }
 
 
-<div class="container-fluid main-container">
+          @media screen and (max-width: 768px) {
+            .distill-site-header.responsive {position: relative; min-height: 500px; }
+            .distill-site-header.responsive a.nav-toggle {
+              position: absolute;
+              right: 0;
+              top: 0;
+            }
+            .distill-site-header.responsive a,
+            .distill-site-header.responsive .nav-dropdown {
+              display: block;
+              text-align: left;
+            }
+            .distill-site-header.responsive .nav-left,
+            .distill-site-header.responsive .nav-right {
+              width: 100%;
+            }
+            .distill-site-header.responsive .nav-dropdown {float: none;}
+            .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+            .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+              display: block;
+              width: 100%;
+              text-align: left;
+            }
+          }
+
+          /* Site Footer */
+
+          .distill-site-footer {
+            width: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+            z-index: 3;
+            margin-top: 30px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+            text-align: center;
+          }
+
+          /* Headroom */
+
+          d-title {
+            padding-top: 6rem;
+          }
+
+          @media print {
+            d-title {
+              padding-top: 4rem;
+            }
+          }
+
+          .headroom {
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+          }
+
+          .headroom--transition {
+            transition: all .4s ease-in-out;
+          }
+
+          .headroom--unpinned {
+            top: -100px;
+          }
+
+          .headroom--pinned {
+            top: 0;
+          }
+
+          /* adjust viewport for navbar height */
+          /* helps vertically center bootstrap (non-distill) content */
+          .min-vh-100 {
+            min-height: calc(100vh - 100px) !important;
+          }
+
+          </style>
+
+          <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+          <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+          <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+          <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+          <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+          <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+          <script type="application/javascript">
+
+          function getMeta(metaName) {
+            var metas = document.getElementsByTagName('meta');
+            for (let i = 0; i < metas.length; i++) {
+              if (metas[i].getAttribute('name') === metaName) {
+                return metas[i].getAttribute('content');
+              }
+            }
+            return '';
+          }
+
+          function offsetURL(url) {
+            var offset = getMeta('distill:offset');
+            return offset ? offset + '/' + url : url;
+          }
+
+          function createFuseIndex() {
+
+            // create fuse index
+            var options = {
+              keys: [
+                { name: 'title', weight: 20 },
+                { name: 'categories', weight: 15 },
+                { name: 'description', weight: 10 },
+                { name: 'contents', weight: 5 },
+              ],
+              ignoreLocation: true,
+              threshold: 0
+            };
+            var fuse = new window.Fuse([], options);
+
+            // fetch the main search.json
+            return fetch(offsetURL('search.json'))
+              .then(function(response) {
+                if (response.status == 200) {
+                  return response.json().then(function(json) {
+                    // index main articles
+                    json.articles.forEach(function(article) {
+                      fuse.add(article);
+                    });
+                    // download collections and index their articles
+                    return Promise.all(json.collections.map(function(collection) {
+                      return fetch(offsetURL(collection)).then(function(response) {
+                        if (response.status === 200) {
+                          return response.json().then(function(articles) {
+                            articles.forEach(function(article) {
+                              fuse.add(article);
+                            });
+                          })
+                        } else {
+                          return Promise.reject(
+                            new Error('Unexpected status from search index request: ' +
+                                      response.status)
+                          );
+                        }
+                      });
+                    })).then(function() {
+                      return fuse;
+                    });
+                  });
+
+                } else {
+                  return Promise.reject(
+                    new Error('Unexpected status from search index request: ' +
+                                response.status)
+                  );
+                }
+              });
+          }
+
+          window.document.addEventListener("DOMContentLoaded", function (event) {
+
+            // get search element (bail if we don't have one)
+            var searchEl = window.document.getElementById('distill-search');
+            if (!searchEl)
+              return;
+
+            createFuseIndex()
+              .then(function(fuse) {
+
+                // make search box visible
+                searchEl.classList.remove('hidden');
+
+                // initialize autocomplete
+                var options = {
+                  autoselect: true,
+                  hint: false,
+                  minLength: 2,
+                };
+                window.autocomplete(searchEl, options, [{
+                  source: function(query, callback) {
+                    const searchOptions = {
+                      isCaseSensitive: false,
+                      shouldSort: true,
+                      minMatchCharLength: 2,
+                      limit: 10,
+                    };
+                    var results = fuse.search(query, searchOptions);
+                    callback(results
+                      .map(function(result) { return result.item; })
+                    );
+                  },
+                  templates: {
+                    suggestion: function(suggestion) {
+                      var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+                        ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+                        : '';
+                      var html = `
+                        <div class="search-item">
+                          <h3>${suggestion.title}</h3>
+                          <div class="search-item-description">
+                            ${suggestion.description || ''}
+                          </div>
+                          <div class="search-item-preview">
+                            ${img}
+                          </div>
+                        </div>
+                      `;
+                      return html;
+                    }
+                  }
+                }]).on('autocomplete:selected', function(event, suggestion) {
+                  window.location.href = offsetURL(suggestion.path);
+                });
+                // remove inline display style on autocompleter (we want to
+                // manage responsive display via css)
+                $('.algolia-autocomplete').css("display", "");
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
+
+          });
+
+          </script>
+
+          <style type="text/css">
+
+          .nav-search {
+            font-size: x-small;
+          }
+
+          /* Algolioa Autocomplete */
+
+          .algolia-autocomplete {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: sub;
+            background-color: white;
+            color: black;
+            padding: 6px;
+            padding-top: 8px;
+            padding-bottom: 0;
+            border-radius: 6px;
+            border: 1px #0F2E3D solid;
+            width: 180px;
+          }
 
 
+          @media screen and (max-width: 768px) {
+            .distill-site-nav .algolia-autocomplete {
+              display: none;
+              visibility: hidden;
+            }
+            .distill-site-nav.responsive .algolia-autocomplete {
+              display: inline-block;
+              visibility: visible;
+            }
+            .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+              margin-left: 0;
+              width: 400px;
+              max-height: 400px;
+            }
+          }
+
+          .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+            width: 90%;
+            outline: none;
+            border: none;
+          }
+
+          .algolia-autocomplete .aa-hint {
+            color: #999;
+          }
+          .algolia-autocomplete .aa-dropdown-menu {
+            width: 550px;
+            max-height: 70vh;
+            overflow-x: visible;
+            overflow-y: scroll;
+            padding: 5px;
+            margin-top: 3px;
+            margin-left: -150px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #999;
+            border-top: none;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+            cursor: pointer;
+            padding: 5px 4px;
+            border-bottom: 1px solid #eee;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+            border-bottom: none;
+            margin-bottom: 2px;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+            overflow: hidden;
+            font-size: 0.8em;
+            line-height: 1.4em;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+            font-size: 1rem;
+            margin-block-start: 0;
+            margin-block-end: 5px;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+            display: inline-block;
+            overflow: hidden;
+            height: 2.8em;
+            width: 80%;
+            margin-right: 4%;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+            display: inline-block;
+            width: 15%;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+            height: 3em;
+            width: auto;
+            display: none;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+            display: initial;
+          }
+
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+            background-color: #eee;
+          }
+          .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+            font-weight: bold;
+            font-style: normal;
+          }
+
+          </style>
 
 
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Zachary Thomas McDowell</a>
+          <!--/radix_placeholder_navigation_in_header-->
+          <!--radix_placeholder_site_in_header-->
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              if (!/posts/.test(location.pathname)) {
+                return;
+              }
+
+              var script = document.createElement("script");
+              script.src = "https://utteranc.es/client.js";
+              script.setAttribute("repo", "etiennebacher/personal_website_distill");
+              script.setAttribute("issue-term", "og:title");
+              script.setAttribute("crossorigin", "anonymous");
+              script.setAttribute("label", "comment_thread");
+
+              /* wait for article to load, append script to article element */
+              var observer = new MutationObserver(function (mutations, observer) {
+                var article = document.querySelector("d-article");
+                if (article) {
+                  observer.disconnect();
+                  /* HACK: article scroll */
+                  article.setAttribute("style", "overflow-y: hidden");
+                  article.appendChild(script);
+                }
+              });
+
+              observer.observe(document.body, { childList: true });
+            });
+          </script>
+          <!--/radix_placeholder_site_in_header-->
+          
+          <style type="text/css">
+          body {
+            padding-top: 60px;
+          }
+          </style>
+          <script src="/Library/Frameworks/R.framework/Versions/4.1/Resources/library/rmarkdown/rmd/h/pandoc/header-attrs.js"></script>
+    
+    
+  </head>
+  <body>
+
+          <!--radix_placeholder_navigation_before_body-->
+          <header class="header header--fixed" role="banner">
+          <nav class="distill-site-nav distill-site-header">
+          <div class="nav-left">
+          <a href="index.html" class="title">Zachary Thomas McDowell</a>
+          </div>
+          <div class="nav-right">
+          <a href="index.html">
+          <i class="fa fa-home" aria-hidden="true"></i>
+          </a>
+          <a href="resume.html">Resume/CV</a>
+          <a href="working_papers.html">Working Papers</a>
+          <a href="data_viz.html">Data Visualizations</a>
+          <a href="readings.html">Influential Readings</a>
+          <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+          </div>
+          </nav>
+          </header>
+          <!--/radix_placeholder_navigation_before_body-->
+          <!--radix_placeholder_site_before_body-->
+          <!--/radix_placeholder_site_before_body-->
+    
+    <div class="container-fluid d-none d-lg-block d-xl-block">
+      <div class="d-flex row flex-row vh-100">
+        <div class="d-flex flex-column col-5 align-items-center text-center align-self-center">
+          <div class="mx-auto text-center">
+            <div class="p-3">
+              <img src="portrait.jpg" style="width: 35%" class="rounded">
+            </div>
+            <div class="p-2">
+              <h1>Zachary Thomas McDowell</h1>
+            </div>
+            <hr style="width:60%;"/>
+            <div class="p-2">
+              <div id="icon-list">
+                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                    <a href=https://github.com/ztm76617>
+                      <button type="button" class="btn btn-outline-dark mb-2">
+                        <i class="fab fa-github fa-lg"></i> GitHub
+                      </button>
+                    </a>
+                  </li>
+                                    <li class="list-inline-item">
+                    <a href=https://www.linkedin.com/in/zach-mcdowell34/>
+                      <button type="button" class="btn btn-outline-dark mb-2">
+                        <i class="fab fa-linkedin fa-lg"></i> LinkedIn
+                      </button>
+                    </a>
+                  </li>
+                                    <li class="list-inline-item">
+                    <a href=zachmcdowell@gmx.com>
+                      <button type="button" class="btn btn-outline-dark mb-2">
+                        <i class="fas fa-envelope fa-lg"></i> Email
+                      </button>
+                    </a>
+                  </li>
+                                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-column vh-100 border-left"></div>
+<div class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: none;">
+          <div class="my-5" id="content">
+            <!-- The postcard had a useless second scrollbar (in addition to the big one of distill). For some reason, I couldn't remove it with the CSS in custom.css. My only solution is to modify the source of the postcards::trestle template to remove this scrollbar. -->
+            <!-- Same for font family -->
+            <p><br></p>
+            <p>I earned both my BA and MA in Political Science from the
+            University of Georgia. This website exists to host my
+            various professional materials and documents associated with
+            both past and ongoing research projects.</p>
+            <p>I’ve included a number of academic articles and books on
+            the “Influential Readings” page to provide an overview of
+            the types of research that I regularly engage with.</p>
+            <p>If you want to contact me, the best way to do so is by
+            email.</p>
+            <p><br></p>
+            <style type="text/css">
+            .columnname {
+              font-size: 1.4rem; 
+              font-weight: 600;
+            }
+            .grad-item {
+              list-style: none; 
+              background-image: url(graduation-cap-solid.png); 
+              background-repeat: no-repeat;  
+              background-size: 1.2rem; 
+              padding-left: 2rem;
+            }
+            .grad-location {
+              font-size: 0.8rem;
+              color: grey;
+            }
+            </style>
+            <div
+            style="display: grid; grid-template-columns: 40% 50%; grid-column-gap: 30px; line-height: 1.5rem;">
+            <div>
+            <p><span class="columnname"> Interests </span></p>
+            <ul>
+            <li><p>Time-Series Econometrics</p></li>
+            <li><p>International &amp; Comparative Political
+            Economy</p></li>
+            <li><p>The Politics of Income Inequality &amp;
+            Redistribution</p></li>
+            <li><p>The Causes and Consequences of Economic
+            Crises</p></li>
+            <li><p>Cross-National Trends in Capital Investment</p></li>
+            </ul>
+            </div>
+            <div>
+            <p><span class="columnname"> Education </span></p>
+            <ul>
+            <li class="grad-item">
+            Master’s Degree in Political Science (Minor in Quantitative
+            Research Methods), 2020 - 2022 <br>
+            <p class="grad-location">
+            University of Georgia
+            </p>
+            </li>
+            <li class="grad-item">
+            Bachelor’s Degree in Political Science, 2017 - 2019 <br>
+            <p class="grad-location">
+            University of Georgia
+            </p>
+            </li>
+            </li>
+            </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">
-    <span class="fa fa-home"></span>
-     
-    Home
-  </a>
-</li>
-<li>
-  <a href="resume.html">
-    <span class="fa fa-address-card"></span>
-     
-    Resume/CV
-  </a>
-</li>
-<li>
-  <a href="working_papers.html">
-    <span class="fa fa-file-pdf"></span>
-     
-    Working Papers
-  </a>
-</li>
-<li>
-  <a href="data_viz.html">
-    <span class="fa fa-chart-area"></span>
-     
-    Data Visualizations
-  </a>
-</li>
-<li>
-  <a href="readings.html">
-    <span class="fa fa-book"></span>
-     
-    Influential Readings
-  </a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
 
-<div id="header">
+    <div class="container-flex min-vh-100 d-block d-lg-none d-xl-none">
+      <div class="d-flex flex-row justify-content-center">
+        <div class="d-flex flex-col">
+          <div class="mx-auto">
+            <div class="p-3 mt-3 text-center">
+              <img src="portrait.jpg" style="width: 35%" class="rounded">
+            </div>
+            <div class="p-2 text-center">
+              <h1>Zachary Thomas McDowell</h1>
+            </div>
+            <hr style="width:60%;"/>
 
+            <div class="row justify-content-center align-items-center">
+              <div class="col-8 p-1 text-center">
+                <div class="list-group">
+                                    <a href=https://github.com/ztm76617>
+                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                      <i class="fab fa-github fa-lg"></i> GitHub
+                    </button>
+                  </a>
+                                    <a href=https://www.linkedin.com/in/zach-mcdowell34/>
+                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                      <i class="fab fa-linkedin fa-lg"></i> LinkedIn
+                    </button>
+                  </a>
+                                    <a href=zachmcdowell@gmx.com>
+                    <button type="button" class="list-group-item list-group-item-action my-1 rounded">
+                      <i class="fas fa-envelope fa-lg"></i> Email
+                    </button>
+                  </a>
+                                  </div>
+              </div>
+            </div>
+            <div class="p pt-4 px-5">
+              <!-- The postcard had a useless second scrollbar (in addition to the big one of distill). For some reason, I couldn't remove it with the CSS in custom.css. My only solution is to modify the source of the postcards::trestle template to remove this scrollbar. -->
+              <!-- Same for font family -->
+              <p><br></p>
+              <p>I earned both my BA and MA in Political Science from
+              the University of Georgia. This website exists to host my
+              various professional materials and documents associated
+              with both past and ongoing research projects.</p>
+              <p>I’ve included a number of academic articles and books
+              on the “Influential Readings” page to provide an overview
+              of the types of research that I regularly engage with.</p>
+              <p>If you want to contact me, the best way to do so is by
+              email.</p>
+              <p><br></p>
+              <style type="text/css">
+              .columnname {
+                font-size: 1.4rem; 
+                font-weight: 600;
+              }
+              .grad-item {
+                list-style: none; 
+                background-image: url(graduation-cap-solid.png); 
+                background-repeat: no-repeat;  
+                background-size: 1.2rem; 
+                padding-left: 2rem;
+              }
+              .grad-location {
+                font-size: 0.8rem;
+                color: grey;
+              }
+              </style>
+              <div
+              style="display: grid; grid-template-columns: 40% 50%; grid-column-gap: 30px; line-height: 1.5rem;">
+              <div>
+              <p><span class="columnname"> Interests </span></p>
+              <ul>
+              <li><p>Time-Series Econometrics</p></li>
+              <li><p>International &amp; Comparative Political
+              Economy</p></li>
+              <li><p>The Politics of Income Inequality &amp;
+              Redistribution</p></li>
+              <li><p>The Causes and Consequences of Economic
+              Crises</p></li>
+              <li><p>Cross-National Trends in Capital
+              Investment</p></li>
+              </ul>
+              </div>
+              <div>
+              <p><span class="columnname"> Education </span></p>
+              <ul>
+              <li class="grad-item">
+              Master’s Degree in Political Science (Minor in
+              Quantitative Research Methods), 2020 - 2022 <br>
+              <p class="grad-location">
+              University of Georgia
+              </p>
+              </li>
+              <li class="grad-item">
+              Bachelor’s Degree in Political Science, 2017 - 2019 <br>
+              <p class="grad-location">
+              University of Georgia
+              </p>
+              </li>
+              </li>
+              </ul>
+              </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-<h1 class="title toc-ignore">Homepage</h1>
-
-</div>
-
-
-<hr />
-<style type="text/css">
-html body div.container-fluid.main-container p {
-  text-align: left;
-  font-size: 25px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-html body div.container-fluid.main-container p img {
- display: block;
- margin-left: auto;
- margin-right: auto;
- width: 35%;
-}
-
-</style>
-<div class="floatting">
-<p><img src="portrait.jpg" width="50%" style="float:left; padding:30px" /></p>
-</div>
-<p><strong>My name is Zachary Thomas McDowell.</strong><br />
-<br />
-I earned both my BA and MA in Political Science from the University of
-Georgia. This website exists to host my various professional materials
-and documents associated with both past and ongoing research
-projects.<br />
-<br />
-My research typically involves the following topics:</p>
-<ul>
-<li>Time-Series Econometrics</li>
-<li>International &amp; Comparative Political Economy</li>
-<li>The Politics of Income Inequality &amp; Redistribution</li>
-<li>The Causes and Consequences of Economic Crises</li>
-<li>Cross-National Trends in Capital Investment<br />
-<br />
-</li>
-</ul>
-<p>I’ve included a number of academic articles and books on the
-“Influential Readings” page to provide an overview of the types of
-research that I regularly engage with.</p>
-<hr />
-
-
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
-</body>
+      <!--radix_placeholder_site_after_body-->
+      <!--/radix_placeholder_site_after_body-->
+      <!--radix_placeholder_navigation_after_body-->
+      <!--/radix_placeholder_navigation_after_body-->
+  
+  </body>
 </html>

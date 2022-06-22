@@ -1,52 +1,102 @@
 ---
-title: "Homepage"
-output: html_document
+title: "Zachary Thomas McDowell"
+image: "portrait.jpg"
+links:
+  - label: '<i class="fab fa-github fa-lg"></i> GitHub'
+    url: "https://github.com/ztm76617"
+  - label: '<i class="fab fa-linkedin fa-lg"></i> LinkedIn'
+    url: "https://www.linkedin.com/in/zach-mcdowell34/"
+  - label: '<i class="fas fa-envelope fa-lg"></i> Email'
+    url: "zachmcdowell@gmx.com"
+output:
+  postcards::trestles
+site: distill::distill_website
 ---
 
-***
+<!-- The postcard had a useless second scrollbar (in addition to the big one of distill). For some reason, I couldn't remove it with the CSS in custom.css. My only solution is to modify the source of the postcards::trestle template to remove this scrollbar. -->
+<!-- Same for font family -->
+```{r, include = FALSE}
+trestles_orig <- readLines(
+  system.file("pandoc_templates/trestles.html",
+              package = "postcards")
+)
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+trestles_mod <- trestles_orig
+
+trestles_mod[
+  which(
+    grepl(
+      'class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: scroll;"',
+      trestles_mod
+    )
+  )
+] <- '<div class="d-flex flex-column col px-5 align-items-center align-self-center mh-100" style="overflow-y: none;">'
+
+trestles_mod <- gsub("'Roboto Slab'", '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif', trestles_mod)
+
+trestles_mod <- gsub('style="height:15rem"', 'style="width: 35%"', trestles_mod)
+
+cat(paste(trestles_mod, collapse = "\n"), file = system.file("pandoc_templates/trestles.html",
+              package = "postcards"))
+
 ```
 
-```{css, echo=FALSE, cache=TRUE}
-html body div.container-fluid.main-container p {
-  text-align: left;
-  font-size: 25px;
-  padding-right: 10px;
-  padding-left: 10px;
-}
+<br>
 
-html body div.container-fluid.main-container p img {
- display: block;
- margin-left: auto;
- margin-right: auto;
- width: 35%;
-}
-
-```
-
-::: floatting
-
-```{r out.width='50%', out.extra='style="float:left; padding:30px"', echo=FALSE}
-knitr::include_graphics("portrait.JPG")
-```
-
-:::
-
-**My name is Zachary Thomas McDowell.**\
-\
-I earned both my BA and MA in Political Science from the University of Georgia. This website exists to host my various professional materials and documents associated with both past and ongoing research projects.\
-\
-My research typically involves the following topics:
-
-- Time-Series Econometrics
-- International & Comparative Political Economy
-- The Politics of Income Inequality & Redistribution
-- The Causes and Consequences of Economic Crises
-- Cross-National Trends in Capital Investment\
-\
+I earned both my BA and MA in Political Science from the University of Georgia. This website exists to host my various professional materials and documents associated with both past and ongoing research projects.
 
 I've included a number of academic articles and books on the "Influential Readings" page to provide an overview of the types of research that I regularly engage with.
 
-***
+If you want to contact me, the best way to do so is by email.
+
+<br>
+
+
+```{css, echo = FALSE}
+.columnname {
+  font-size: 1.4rem; 
+  font-weight: 600;
+}
+.grad-item {
+  list-style: none; 
+  background-image: url(graduation-cap-solid.png); 
+  background-repeat: no-repeat;  
+  background-size: 1.2rem; 
+  padding-left: 2rem;
+}
+.grad-location {
+  font-size: 0.8rem;
+  color: grey;
+}
+```
+
+:::: {style="display: grid; grid-template-columns: 40% 50%; grid-column-gap: 30px; line-height: 1.5rem;"}
+
+::: {}
+<span class = "columnname"> Interests </span>
+
+* Time-Series Econometrics
+
+* International & Comparative Political Economy
+
+* The Politics of Income Inequality & Redistribution
+
+* The Causes and Consequences of Economic Crises
+
+* Cross-National Trends in Capital Investment
+:::
+
+::: {}
+<span class = "columnname"> Education </span>
+
+<ul>
+ 
+<li class = "grad-item">   Master's Degree in Political Science (Minor in Quantitative Research Methods), 2020 - 2022 <br> <p class = "grad-location"> University of Georgia </p> </li>
+<li class = "grad-item">   Bachelor's Degree in Political Science, 2017 - 2019 <br>
+<p class = "grad-location"> University of Georgia </p> </li>
+</li>
+
+</ul>
+:::
+::::
+

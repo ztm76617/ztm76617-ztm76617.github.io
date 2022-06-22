@@ -1,6 +1,5 @@
 ---
 title: "Working Papers"
-output: html_document
 ---
 
 <div class="post">
@@ -8,8 +7,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-***
 
 ```{r knitr, echo=FALSE, cache=TRUE}
 knitr::include_graphics(c("welfare-paper.pdf", "welfare-lit-review-2.1.pdf"))

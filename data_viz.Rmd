@@ -1,6 +1,5 @@
 ---
 title: "Data Visualizations"
-output: html_document
 ---
 
 ```{r include = FALSE}
@@ -29,7 +28,6 @@ tax_expenditure_distriibution_df_v2 <- readRDS("tax_expenditure_distriibution_df
 #-----------------------------------------------------------------------------------------------
 ```
 
-***
 ## Barplots
 
 ```{r tax_expenditure_dist, cache=TRUE}

@@ -6,6 +6,9 @@ library(kableExtra); library(car); library(zoo); library(rio); library(readxl); 
 library(IndexNumR); library(wid); library(scales);library(ISOcodes); library(labelled); library(wesanderson); library(captioner)
 library(stats); library(smooth); library(tm); library(TTR); library(naniar); library(countrycode); library(RColorBrewer)
 library(WDI); library(lmtest); library(sandwich); library(interactions); library(ggpubr); library(gplots); library(purrr)
+
+install.packages("postcards")
+library(postcards)
 #--------------------------------------------------------------------------------------
 devtools::install_github('Mikata-Project/ggthemr')
 

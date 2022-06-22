@@ -1,9 +1,0 @@
----
-title: "misc lololol"
-output: html_document
----
-
-idk this is even supposed to do!!!
-
-
-
