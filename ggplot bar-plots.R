@@ -101,53 +101,10 @@ tax_expenditure_distriibution_df_v2 %>%
   scale_x_discrete(breaks = c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile", "top_quintile", "top_1pct"),
                    labels = c("Q1", "Q2", "Q3", "Q4", "Q5", "Top 1%"))
 
-ggsave("tax_expend_dist.png", width = 8, height = 6)
-#--------------------------------------------------------------------------------
-# Stacked Barplot 
-#--------------------------------------------------------------------------------
-ggthemr('tableau')
-
-tax_expenditure_distriibution_df %>%
-  mutate(income_group = factor(income_group, c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile",
-                                               "81_pctile_90pctile", "91st_pctile_95th_pctile", "96th_pctile_99th_pctile", "top_1pct"))) %>%
-  ggplot(aes(income_quintile, income_tax_expenditure_share, fill = income_group)) +
-  geom_bar(stat = "identity", position = position_stack(reverse = TRUE), width = 0.5) +
-  labs(x = "Income Quintile",
-       y = "Share of Income Tax Expenditures (%)",
-       caption = "
-       Data source(s): Congressional Budget Office",
-       fill = "Income Percentiles",
-       title = "Distribution of Income Tax Expenditures by Income Quintile") +
-  theme(text = element_text(face = 'bold', size = 8),
-        axis.title.x = element_text(vjust = -0.75),
-        axis.title.y = element_text(vjust = 0.75),
-        panel.background = element_rect(colour = "black"),
-        strip.text.x = element_text(face = "bold"),
-        plot.caption = element_text(hjust = 0),
-        plot.caption.position = "plot",
-        legend.background = element_blank(),
-        legend.position = "right",
-        legend.text = element_text(size = 7),
-        legend.title = element_text(size = 8),
-        legend.box.background = element_rect(colour = "black"),
-        legend.box.margin = margin(2, 2, 2, 2)) +
-  scale_x_discrete(labels = c("Q1", "Q2", "Q3", "Q4", "Q5")) +
-  scale_fill_discrete(breaks = c("81_pctile_90pctile", "91st_pctile_95th_pctile", "96th_pctile_99th_pctile", "top_1pct"),
-                      labels = c("81st to 90th",
-                                 "91st to 95th",
-                                 "96th to 99th",
-                                 "Top 1%"))
-
-ggsave("tax_expend_dist2.png", width = 6, height = 5)
-#--------------------------------------------------------------------------------
-specie <- c(rep("sorgho" , 3) , rep("poacee" , 3) , rep("banana" , 3) , rep("triticum" , 3) )
-condition <- rep(c("normal" , "stress" , "Nitrogen") , 4)
-value <- abs(rnorm(12 , 0 , 15))
-data <- data.frame(specie,condition,value)
-
-# Grouped
-ggplot(data, aes(fill=condition, y=value, x=specie)) + 
-  geom_bar(position="dodge", stat="identity")
+tax_expenditure_distriibution_df_v2 %>%
+  mutate(income_group = factor(income_group, c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile", "top_quintile", "top_1pct"))) %>%
+  filter(income_group %in% c("first_quintile", "second_quintile", "middle_quintile", "fourth_quintile", "top_quintile", "top_1pct")) %>%
+  view()
 
 
 #--------------------------------------------------------------------------------

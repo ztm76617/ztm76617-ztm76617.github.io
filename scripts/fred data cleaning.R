@@ -29,21 +29,76 @@ map_dfr(c("SMU11000000500000003",
         frequency = "m",
         units = "pch") %>%
   mutate(date = ymd(date),
-         series_id = case_when(series_id == "SMU11000000500000003" ~ "Avg. Hourly Earnings (All Private Employees)",
-                               series_id == "DCUCSFRCONDOSMSAMID" ~ "Zillow Home Value Index)",
+         series_id = case_when(series_id == "SMU11000000500000003" ~ "Average Hourly Earnings",
+                               series_id == "DCUCSFRCONDOSMSAMID" ~ "Zillow Home Value Index",
                                series_id == "LBSSA11" ~ "Labor Force Participation Rate")) %>%
   filter(date >= "2019-01-01") %>%
   ggplot(mapping = aes(x = date, y = value)) +
   geom_line() +
   geom_smooth(method = "loess") +
   theme_bw() +
-  labs(x = "Date",
+  labs(x = "Month-Year",
        y = "Percent Change (%)",
        title = "Washington, DC Area",
        subtitle = "Monthly Economic Data (2019 - 2022)") +
-  theme(text = element_text(face = 'bold'),
+  theme(axis.text.x = element_text(angle = 35, hjust = 1, size = 8),
+        text = element_text(face = 'bold'),
         legend.position = "bottom",
         legend.background = element_blank(),
         legend.box.background = element_rect(colour = "black")) +
-  facet_grid(vars(series_id))
+  scale_x_date(date_labels = "%b-%Y",
+               date_breaks = "4 month") +
+  facet_wrap(vars(series_id))
+#--------------------------------------------------------------------------------------
+# fedr ggplot
+#--------------------------------------------------------------------------------------
+map_dfr(c("DCBPPRIVSA"),
+        fredr,
+        frequency = "m",
+        units = "pch") %>%
+  mutate(date = ymd(date),
+         series_id = case_when(series_id == "DCBPPRIVSA" ~ "New Housing Permits")) %>%
+  filter(date >= "2019-01-01") %>%
+  ggplot(mapping = aes(x = date, y = value)) +
+  geom_line() +
+  geom_smooth(method = "loess") +
+  theme_bw() +
+  labs(x = "Month-Year",
+       y = "Monthly Change",
+       title = "Washington, DC Area",
+       subtitle = "Monthly Economic Data (2019 - 2022)") +
+  theme(axis.text.x = element_text(angle = 35, hjust = 1, size = 8),
+        text = element_text(face = 'bold'),
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_date(date_labels = "%b-%Y",
+               date_breaks = "4 month") +
+  scale_y_continuous(limits = c(-900, 2850),
+                     labels = label_percent(big.mark = ",")) +
+  facet_wrap(vars(series_id))
+#--------------------------------------------------------------------------------------
+map_dfr(c("SMS11000009091000001",
+          "DCLEIH",
+          "SMU11000006056130001SA"),
+        fredr,
+        frequency = "m",
+        units = "lin") %>%
+  mutate(date = ymd(date),
+         series_id = case_when(series_id == "SMS11000009091000001" ~ "Federal Governmentt",
+                               series_id == "DCLEIH" ~ "Leisure/Hospitality",
+                               series_id == "SMU11000006056130001SA" ~ "Business/Professional Services")) %>%
+  filter(date == "2022-05-01") %>%
+  view()
+  
+  
+  ggplot(aes(y=value, x=series_id)) + 
+  geom_bar(position="dodge", stat="identity", width = 0.4) +
+  theme_bw() +
+  labs(x = "",
+       y = "Number of Employees (Thousands)",
+       title = "Washington, DC Area (May 2022)") +
+  theme(text = element_text(face = 'bold'))
+
+
     
