@@ -2,8 +2,6 @@
 title: "Resume/CV"
 ---
 
-<div class="post">
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -20,21 +18,6 @@ knitr::include_graphics("academic_resume v2.1.pdf")
 
 ```{r cv, echo=FALSE, cache=TRUE}
 knitr::include_graphics("academic CV.pdf")
-```
-
-
-```{css, echo=FALSE}
-.post {
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-html body div.container-fluid.main-container p embed {
-  width: 600px;
-  height: 700px;
-  border: 1px solid #c3c3c3;
-}
 ```
 
 ***

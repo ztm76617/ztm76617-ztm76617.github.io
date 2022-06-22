@@ -7,7 +7,7 @@ links:
   - label: '<i class="fab fa-linkedin fa-lg"></i> LinkedIn'
     url: "https://www.linkedin.com/in/zach-mcdowell34/"
   - label: '<i class="fas fa-envelope fa-lg"></i> Email'
-    url: "zachmcdowell@gmx.com"
+    url: "mailto:zachmcdowell@gmx.com"
 output:
   postcards::trestles
 site: distill::distill_website
@@ -84,6 +84,8 @@ If you want to contact me, the best way to do so is by email.
 * The Causes and Consequences of Economic Crises
 
 * Cross-National Trends in Capital Investment
+
+* R programming
 :::
 
 ::: {}
