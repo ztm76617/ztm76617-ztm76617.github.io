@@ -7,9 +7,17 @@ navbar:
     - icon: fa-home
       href: index.html
     - text: "Resume/CV"
-      href: resume.html
+      menu:
+      - text: "Resume"
+        href: "academic_resume v2.1.pdf"
+      - text: "CV"
+        href: "academic CV.pdf"
     - text: "Working Papers"
-      href: working_papers.html
+      menu:
+      - text: "The Political Consequences of Falling Profit Rates: An Empirical Analysis of Private Welfare Spending in OECD Countries"
+        href: "welfare-paper.pdf"
+      - text: "The Complicated State of Welfare: Examining Divided Social Protection Sytems in Advanced Democracies"
+        href: "welfare-lit-review-2.1.pdf"
     - text: "Data Visualizations"
       href: data_viz.html
     - text: "Influential Readings"

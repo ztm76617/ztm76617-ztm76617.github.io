@@ -191,3 +191,9 @@ html body div.container-fluid.d-none.d-lg-block.d-xl-block div.d-flex.row.flex-r
 d-article div.sourceCode pre {
   overflow-x: auto !important;
 }
+
+div.csl-bib-body {
+  font-size: 16pt;
+  color: #000000;
+  --heading-size: 0;
+}
