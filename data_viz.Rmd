@@ -406,9 +406,9 @@ new_mega_edits_df %>%
   ggplot(aes(x = oecd_union_density,
              y = pct_gdp_labor_compensation)) +
   geom_point(size = 0.75) +
-  labs(title = "Union Density vs. Labor Comnpensation (1960-2020)",
+  labs(title = "Union Density vs. Labor Compensation (1960-2020)",
        x = "Union Density (% Working Population)",
-       y = "Labor Share of Comnpensation (% GDP)",
+       y = "Labor Share of Compensation (% GDP)",
        caption = "
        Data source(s): Comparative Politics Data Set") +
   theme_bw() +
