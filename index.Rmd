@@ -85,7 +85,7 @@ If you want to contact me, the best way to do so is by email.
 
 * Cross-National Trends in Capital Investment
 
-* R programming
+* R Programming
 :::
 
 ::: {}
@@ -93,7 +93,8 @@ If you want to contact me, the best way to do so is by email.
 
 <ul>
  
-<li class = "grad-item">   Master's Degree in Political Science (Minor in Quantitative Research Methods), 2020 - 2022 <br> <p class = "grad-location"> University of Georgia </p> </li>
+<li class = "grad-item">   Master's Degree in Political Science\
+Minor in Quantitative Research Methods, 2020 - 2022 <br> <p class = "grad-location"> University of Georgia </p> </li>
 <li class = "grad-item">   Bachelor's Degree in Political Science, 2017 - 2019 <br>
 <p class = "grad-location"> University of Georgia </p> </li>
 </li>
