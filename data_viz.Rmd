@@ -4,7 +4,7 @@ title: "Data Visualizations"
 
 ```{r include = FALSE}
 #---------------------------------------------------------------------
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center")
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", out.width = "150%")
 #---------------------------------------------------------------------
 # Load Packages
 #---------------------------------------------------------------------
@@ -125,7 +125,7 @@ map_dfr(c("SMS11000009091000001",
 ***
 ## Lineplots
 
-```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE}
+```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.5}
 #--------------------------------------------------------------------------------------
 # fedr ggplot
 #--------------------------------------------------------------------------------------
