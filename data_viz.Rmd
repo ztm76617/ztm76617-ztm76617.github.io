@@ -4,7 +4,7 @@ title: "Data Visualizations"
 
 ```{r include = FALSE}
 #---------------------------------------------------------------------
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", out.width = "200%")
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", out.width = "100%")
 #---------------------------------------------------------------------
 # Load Packages
 #---------------------------------------------------------------------
@@ -15,6 +15,7 @@ library(captioner)
 library(fredr)
 library(lubridate)
 library(scales)
+library(countrycode)
 #---------------------------------------------------------------------
 # Load Data
 #---------------------------------------------------------------------
@@ -25,7 +26,8 @@ new_mega_edits_df <- readRDS("new_mega_edits_df.rds")
 tax_expenditure_distriibution_df <- read_excel("tax expenditure distriibution.xlsx")
 #---------------------------------------------------------------------
 tax_expenditure_distriibution_df_v2 <- readRDS("tax_expenditure_distriibution_df_v2.rds")
-#-----------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------
+pwt_mega_df <- readRDS("~/github-website/pwt_mega_df.rds")
 ```
 
 ## Barplots
@@ -120,6 +122,46 @@ map_dfr(c("SMS11000009091000001",
         plot.caption = element_text(hjust = 0, face = "bold"),
         plot.caption.position = "plot")
 
+```
+
+***
+
+```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=9, fig.asp=0.8}
+pwt_mega_df %>%
+  mutate(pwt_pct_gdp_investment_transport = (pwt_investment_transport_equip_current_LCU/pwt_gdp_current_LCU)*100,
+         pwt_pct_gdp_investment_structures = (pwt_investment_res_nonres_structures_current_LCU/pwt_gdp_current_LCU)*100,
+         pwt_pct_gdp_investment_machinery = (pwt_investment_machinery_plus_equipment_current_LCU/pwt_gdp_current_LCU)*100) %>%
+  filter(country_code_ISO3 %in% c("CHN", "USA", "GBR", "FRA", "JPN", "CAN")) %>%
+  filter(year == 2017) %>%
+  mutate(countries = countrycode(country_code_ISO3, origin = 'iso3c',
+                                 destination = 'p4.name')) %>%
+  select(countries,
+         pwt_pct_gdp_investment_transport,
+         pwt_pct_gdp_investment_structures,
+         pwt_pct_gdp_investment_machinery) %>%
+  rename("Transportation" = pwt_pct_gdp_investment_transport,
+         "Construction" = pwt_pct_gdp_investment_structures,
+         "Machinery" = pwt_pct_gdp_investment_machinery) %>%
+  gather(key = "variable", value = "value", -countries) %>%
+  ggplot(aes(countries, value, fill = variable)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  labs(x = " ",
+       y = "Percent GDP (%)",
+       fill = "Investment Type",
+       caption = "
+       Data source(s): Penn World Table",
+       title = "Cross-National Capital Investments (2017)",
+       subtitle = "Percent of GDP (%)") +
+  theme(text = element_text(face = 'bold'),
+        panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
+        plot.caption = element_text(hjust = 0),
+        plot.caption.position = "plot",
+        legend.background = element_blank(),
+        legend.position = "right",
+        legend.box.background = element_rect(colour = "black"),
+        axis.text.x = element_text(size = 9))
 ```
 
 ***

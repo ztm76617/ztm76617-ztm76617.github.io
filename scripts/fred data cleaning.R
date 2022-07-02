@@ -5,7 +5,7 @@ library(tidyverse); library(stargazer); library(papeR); library(ggrepel); librar
 library(kableExtra); library(car); library(zoo); library(rio); library(readxl); library(haven)
 library(lubridate); library(scales); library(IndexNumR); library(wid); library(datawrangling)
 library(stats); library(smooth); library(plm); library(WDI); library(lmtest); library(sandwich)
-library(interactions); library(rmarkdown); library(captioner); library(fredr)
+library(interactions); library(rmarkdown); library(captioner); library(fredr); library(countrycode)
 #--------------------------------------------------------------------------------------
 # Set API Key
 #--------------------------------------------------------------------------------------
