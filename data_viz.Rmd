@@ -49,6 +49,7 @@ tax_expenditure_distriibution_df_v2 %>%
        Data source(s): Congressional Budget Office") +
   theme_bw() +
   theme(text = element_text(face = 'bold'),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
@@ -79,7 +80,7 @@ new_mega_edits_df %>%
   ggplot(aes(fill=debt, y=value, x=country_name)) + 
   geom_bar(position="dodge", stat="identity") +
   theme_bw() +
-  labs(x = "Country",
+  labs(x = " ",
        y = "Debt Total (% GDP)",
        title = "Cross-National Debt Totals (2015)",
        caption = "
@@ -167,7 +168,7 @@ pwt_mega_df %>%
 ***
 ## Lineplots
 
-```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.5}
+```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=10, fig.asp=0.55}
 #--------------------------------------------------------------------------------------
 # fedr ggplot
 #--------------------------------------------------------------------------------------
@@ -193,6 +194,7 @@ map_dfr(c("SMU11000000500000003",
        caption = "
        Data Source(s): Federal Researve Economic Data (FRED)") +
   theme(axis.text.x = element_text(angle = 35, hjust = 1),
+        axis.title.x = element_text(vjust = -1.5),
         text = element_text(face = 'bold'),
         plot.caption = element_text(hjust = 0, face = "bold"),
         plot.caption.position = "plot",
@@ -225,6 +227,7 @@ map_dfr(c("DCBPPRIVSA"),
        caption = "
        Data Source(s): Federal Researve Economic Data (FRED)") +
   theme(axis.text.x = element_text(angle = 35, hjust = 1),
+        axis.title.x = element_text(vjust = -1.5),
         text = element_text(face = 'bold'),
         plot.caption = element_text(hjust = 0, face = "bold"),
         plot.caption.position = "plot",
@@ -258,6 +261,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
        caption = "
        Data source(s): Penn World Tables") +
   theme(axis.text.x = element_text(angle=35, hjust=1),
+        axis.title.x = element_text(vjust = -1.5),
         text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
         plot.caption = element_text(hjust = 0, face = "bold"),
@@ -292,6 +296,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
   theme_bw() +
   theme(text = element_text(face = 'bold'),
         axis.text.x = element_text(angle = 35, hjust = 1),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
@@ -328,6 +333,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
   theme_bw() +
   theme(text = element_text(face = 'bold'),
         axis.text.x = element_text(angle = 35, hjust = 1),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
@@ -363,6 +369,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
        Data source(s): World Inequality Database",
        title = "Average National Income Share in G7 Countries") +
   theme(text = element_text(face = 'bold'),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
@@ -395,6 +402,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
   theme_bw() +
   theme(text = element_text(face = 'bold'),
         axis.text.x = element_text(angle = 35, hjust = 1),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
@@ -430,6 +438,7 @@ mega_combined_vars_df_SUBSET_added_vars %>%
        Data source(s): Penn World Table 10.0 & World Inequality Database") +
   theme_bw() +
   theme(text = element_text(face = 'bold'),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         plot.caption = element_text(hjust = 0),
         plot.caption.position = "plot",
@@ -455,6 +464,7 @@ new_mega_edits_df %>%
        Data source(s): Comparative Politics Data Set") +
   theme_bw() +
   theme(text = element_text(face = 'bold'),
+        axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
         plot.caption = element_text(hjust = 0),
         plot.caption.position = "plot",
