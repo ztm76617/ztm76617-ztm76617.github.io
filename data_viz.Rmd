@@ -28,6 +28,8 @@ tax_expenditure_distriibution_df <- read_excel("tax expenditure distriibution.xl
 tax_expenditure_distriibution_df_v2 <- readRDS("tax_expenditure_distriibution_df_v2.rds")
 #---------------------------------------------------------------------
 pwt_mega_df <- readRDS("~/github-website/pwt_mega_df.rds")
+#---------------------------------------------------------------------
+fedr_df_v2_copy <- readRDS("fedr_df_v2_copy.rds")
 ```
 
 ## Barplots
@@ -166,6 +168,7 @@ pwt_mega_df %>%
 ```
 
 ***
+
 ## Lineplots
 
 ```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=10, fig.asp=0.55}
@@ -241,6 +244,38 @@ map_dfr(c("DCBPPRIVSA"),
   facet_wrap(vars(series_id))
 ```
 
+***
+
+```{r fed_funds, cache=TRUE}
+#--------------------------------------------------------------------------------
+fedr_df_v2_copy %>%
+  filter(year >= 1970) %>%
+  filter(series_id %in% c('Federal Funds Rate')) %>%
+  ggplot(mapping = aes(x = date, y = value)) +
+  geom_line() +
+  geom_smooth(method = "loess") +
+  theme_bw() +
+  labs(x = "Month-Year",
+       y = "Federal Rate (%)",
+       title = "Federal Funds Effective Rate (%)") +
+  theme(axis.text.x = element_text(angle = 35, hjust = 1),
+        axis.title.x = element_text(vjust = -1),
+        text = element_text(face = 'bold'),
+        legend.position = "bottom",
+        legend.background = element_blank(),
+        legend.box.background = element_rect(colour = "black")) +
+  scale_x_date(date_labels = "%b-%Y",
+               date_breaks = "48 month") +
+  geom_vline(xintercept=as.numeric(fedr_df_v2_copy$date[299]), linetype="longdash", color = "red") +
+  geom_label(label="Volcker Shock",
+             x = as.numeric(fedr_df_v2_copy$date[237]),
+             y = 18.5,
+             label.padding = unit(0.275, "lines"),
+             label.size = 0.15,
+             color = "black",
+             fill = "#69b3a2")
+#--------------------------------------------------------------------------------
+```
 ***
 
 ```{r gdp_growth, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=8, fig.asp=0.8}
