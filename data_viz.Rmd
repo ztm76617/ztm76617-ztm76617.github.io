@@ -4,7 +4,8 @@ title: "Data Visualizations"
 
 ```{r include = FALSE}
 #---------------------------------------------------------------------
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", out.width = "100%")
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.align = "center", out.width = "500%", out.height = "500%")
 #---------------------------------------------------------------------
 # Load Packages
 #---------------------------------------------------------------------
@@ -30,6 +31,9 @@ tax_expenditure_distriibution_df_v2 <- readRDS("tax_expenditure_distriibution_df
 pwt_mega_df <- readRDS("~/github-website/pwt_mega_df.rds")
 #---------------------------------------------------------------------
 fedr_df_v2_copy <- readRDS("fedr_df_v2_copy.rds")
+#---------------------------------------------------------------------
+fredr_set_key("4ea646af5b37ba1c45a0890c7a04f2dc")
+#---------------------------------------------------------------------
 ```
 
 ## Barplots
