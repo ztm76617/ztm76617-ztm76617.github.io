@@ -5,7 +5,7 @@ title: "Data Visualizations"
 ```{r include = FALSE}
 #---------------------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
-                      fig.align = "center", out.width = "500%", out.height = "500%")
+                      fig.align = "center", out.width = "100%", out.height = "100%")
 #---------------------------------------------------------------------
 # Load Packages
 #---------------------------------------------------------------------
@@ -38,7 +38,7 @@ fredr_set_key("4ea646af5b37ba1c45a0890c7a04f2dc")
 
 ## Barplots
 
-```{r tax_expenditure_dist, cache=TRUE}
+```{r tax_expenditure_dist, cache=TRUE, fig.width=20, fig.asp=0.8}
 #--------------------------------------------------------------------------------
 # Solid Barplot
 #--------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ tax_expenditure_distriibution_df_v2 %>%
        y = "Share of Income Tax Expenditures (%)",
        caption = "
        Data source(s): Congressional Budget Office") +
-  theme_bw() +
+  theme_bw(base_size = 35) +
   theme(text = element_text(face = 'bold'),
         axis.title.x = element_text(vjust = -1.5),
         panel.background = element_rect(colour = "black"),
@@ -71,7 +71,7 @@ tax_expenditure_distriibution_df_v2 %>%
 
 ***
 
-```{r debt_bar, cache=TRUE}
+```{r debt_bar, cache=TRUE, fig.width=24, fig.asp=0.85}
 new_mega_edits_df %>%
   filter(iso3 %in% c("USA", "GBR", "DEU", "JPN"),
          year == 2015) %>%
@@ -85,7 +85,7 @@ new_mega_edits_df %>%
   gather(key = "debt", value = "value", -country_name) %>%
   ggplot(aes(fill=debt, y=value, x=country_name)) + 
   geom_bar(position="dodge", stat="identity") +
-  theme_bw() +
+  theme_bw(base_size = 40) +
   labs(x = " ",
        y = "Debt Total (% GDP)",
        title = "Cross-National Debt Totals (2015)",
@@ -97,7 +97,6 @@ new_mega_edits_df %>%
         plot.caption.position = "plot",
         legend.position = "right",
         legend.background = element_blank(),
-        legend.box.background = element_rect(colour = "black"),
         legend.title = element_blank())
 #--------------------------------------------------------------------------------
 ```
@@ -133,7 +132,7 @@ map_dfr(c("SMS11000009091000001",
 
 ***
 
-```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=9, fig.asp=0.8}
+```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=32, fig.asp=0.85}
 pwt_mega_df %>%
   mutate(pwt_pct_gdp_investment_transport = (pwt_investment_transport_equip_current_LCU/pwt_gdp_current_LCU)*100,
          pwt_pct_gdp_investment_structures = (pwt_investment_res_nonres_structures_current_LCU/pwt_gdp_current_LCU)*100,
@@ -152,7 +151,7 @@ pwt_mega_df %>%
   gather(key = "variable", value = "value", -countries) %>%
   ggplot(aes(countries, value, fill = variable)) +
   geom_bar(stat = "identity", position = "dodge") +
-  theme_bw() +
+  theme_bw(base_size = 37.5) +
   labs(x = " ",
        y = "Percent GDP (%)",
        fill = "Investment Type",
@@ -166,16 +165,14 @@ pwt_mega_df %>%
         plot.caption = element_text(hjust = 0),
         plot.caption.position = "plot",
         legend.background = element_blank(),
-        legend.position = "right",
-        legend.box.background = element_rect(colour = "black"),
-        axis.text.x = element_text(size = 9))
+        legend.position = "right")
 ```
 
 ***
 
 ## Lineplots
 
-```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=10, fig.asp=0.55}
+```{r wash_plot1, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=18, fig.asp=0.6}
 #--------------------------------------------------------------------------------------
 # fedr ggplot
 #--------------------------------------------------------------------------------------
@@ -193,7 +190,7 @@ map_dfr(c("SMU11000000500000003",
   ggplot(mapping = aes(x = date, y = value)) +
   geom_line() +
   geom_smooth(method = "loess") +
-  theme_bw() +
+  theme_bw(base_size = 30) +
   labs(x = "Month-Year",
        y = "Percent Change (%)",
        title = "Washington, DC Area",
@@ -215,7 +212,7 @@ map_dfr(c("SMU11000000500000003",
 
 ***
 
-```{r wash_plot2, echo=FALSE, warning=FALSE, cache=TRUE}
+```{r wash_plot2, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=10, fig.asp=0.8}
 map_dfr(c("DCBPPRIVSA"),
         fredr,
         frequency = "m",
@@ -226,7 +223,7 @@ map_dfr(c("DCBPPRIVSA"),
   ggplot(mapping = aes(x = date, y = value)) +
   geom_line() +
   geom_smooth(method = "loess") +
-  theme_bw() +
+  theme_bw(base_size = 20) +
   labs(x = "Month-Year",
        y = "Monthly Change",
        title = "Washington, DC Area",
