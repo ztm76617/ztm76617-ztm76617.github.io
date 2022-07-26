@@ -12,12 +12,8 @@ navbar:
         href: "academic_resume.pdf"
       - text: "CV"
         href: "academic CV.pdf"
-    - text: "Working Papers"
-      menu:
-      - text: "The Political Consequences of Falling Profit Rates: An Empirical Analysis of Private Welfare Spending in OECD Countries"
-        href: "welfare-paper.pdf"
-      - text: "The Complicated State of Welfare: Examining Divided Social Protection Sytems in Advanced Democracies"
-        href: "welfare-lit-review-2.1.pdf"
+    - text: "Current Research"
+      href: "research.html"
     - text: "Data Visualizations"
       href: data_viz.html
     - text: "Influential Readings"

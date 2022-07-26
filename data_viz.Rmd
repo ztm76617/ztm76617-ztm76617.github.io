@@ -132,7 +132,7 @@ map_dfr(c("SMS11000009091000001",
 
 ***
 
-```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=32, fig.asp=0.85}
+```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=18, fig.asp=0.9}
 pwt_mega_df %>%
   mutate(pwt_pct_gdp_investment_transport = (pwt_investment_transport_equip_current_LCU/pwt_gdp_current_LCU)*100,
          pwt_pct_gdp_investment_structures = (pwt_investment_res_nonres_structures_current_LCU/pwt_gdp_current_LCU)*100,
@@ -151,7 +151,7 @@ pwt_mega_df %>%
   gather(key = "variable", value = "value", -countries) %>%
   ggplot(aes(countries, value, fill = variable)) +
   geom_bar(stat = "identity", position = "dodge") +
-  theme_bw(base_size = 37.5) +
+  theme_bw(base_size = 27.5) +
   labs(x = " ",
        y = "Percent GDP (%)",
        fill = "Investment Type",
