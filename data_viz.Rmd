@@ -71,7 +71,7 @@ tax_expenditure_distriibution_df_v2 %>%
 
 ***
 
-```{r debt_bar, cache=TRUE, fig.width=24, fig.asp=0.85}
+```{r debt_bar, cache=TRUE, fig.width=12, fig.asp=0.8}
 new_mega_edits_df %>%
   filter(iso3 %in% c("USA", "GBR", "DEU", "JPN"),
          year == 2015) %>%
@@ -85,19 +85,21 @@ new_mega_edits_df %>%
   gather(key = "debt", value = "value", -country_name) %>%
   ggplot(aes(fill=debt, y=value, x=country_name)) + 
   geom_bar(position="dodge", stat="identity") +
-  theme_bw(base_size = 40) +
+  theme_bw(base_size = 20) +
   labs(x = " ",
        y = "Debt Total (% GDP)",
        title = "Cross-National Debt Totals (2015)",
        caption = "
-       Data Source(s): Global Debt Database") +
+       Data Source(s): Global Debt Database",
+       fill = "Debt Type") +
   theme(text = element_text(face = 'bold'),
         panel.background = element_rect(colour = "black"),
+        strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
         plot.caption.position = "plot",
         legend.position = "right",
         legend.background = element_blank(),
-        legend.title = element_blank())
+        legend.box.background = element_rect(colour = "black"))
 #--------------------------------------------------------------------------------
 ```
 
@@ -132,12 +134,12 @@ map_dfr(c("SMS11000009091000001",
 
 ***
 
-```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=18, fig.asp=0.9}
+```{r investment, echo=FALSE, warning=FALSE, cache=TRUE, fig.width=10, fig.asp=0.9}
 pwt_mega_df %>%
   mutate(pwt_pct_gdp_investment_transport = (pwt_investment_transport_equip_current_LCU/pwt_gdp_current_LCU)*100,
          pwt_pct_gdp_investment_structures = (pwt_investment_res_nonres_structures_current_LCU/pwt_gdp_current_LCU)*100,
          pwt_pct_gdp_investment_machinery = (pwt_investment_machinery_plus_equipment_current_LCU/pwt_gdp_current_LCU)*100) %>%
-  filter(country_code_ISO3 %in% c("CHN", "USA", "GBR", "FRA", "JPN", "CAN")) %>%
+  filter(country_code_ISO3 %in% c("CHN", "USA", "GBR", "FRA", "JPN")) %>%
   filter(year == 2017) %>%
   mutate(countries = countrycode(country_code_ISO3, origin = 'iso3c',
                                  destination = 'p4.name')) %>%
@@ -151,7 +153,7 @@ pwt_mega_df %>%
   gather(key = "variable", value = "value", -countries) %>%
   ggplot(aes(countries, value, fill = variable)) +
   geom_bar(stat = "identity", position = "dodge") +
-  theme_bw(base_size = 27.5) +
+  theme_bw(base_size = 15) +
   labs(x = " ",
        y = "Percent GDP (%)",
        fill = "Investment Type",
@@ -164,8 +166,9 @@ pwt_mega_df %>%
         strip.text.x = element_text(face = "bold"),
         plot.caption = element_text(hjust = 0),
         plot.caption.position = "plot",
+        legend.position = "right",
         legend.background = element_blank(),
-        legend.position = "right")
+        legend.box.background = element_rect(colour = "black"))
 ```
 
 ***
