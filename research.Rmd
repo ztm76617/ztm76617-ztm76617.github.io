@@ -20,28 +20,6 @@ htmltools::withTags(
   )
 ```
 
-```{css echo = FALSE}
-.card2 {
-  background-color: white;
-  border: 2px solid #dae7f1;
-  border-radius: .25rem;
-  padding: 5px;
-}
-.paper-title {
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-.paper-authors {
-  font-size: 1rem;
-  font-style: italic;
-}
-.paper-date {
-  font-size: .9rem
-}
-```
-
-### Working Papers
-
 ```{r paper1, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%"}
 knitr::include_graphics("fed-paper.pdf")
 ```
@@ -63,6 +41,28 @@ knitr::include_graphics("fed-paper.pdf")
 <br>
 
 ***
+
+```{css echo = FALSE}
+.card2 {
+  background-color: white;
+  border: 2px solid #dae7f1;
+  border-radius: .25rem;
+  padding: 5px;
+}
+.paper-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.paper-authors {
+  font-size: 1rem;
+  font-style: italic;
+}
+.paper-date {
+  font-size: .9rem
+}
+```
+
+### Working Papers
 
 ```{r card2, echo = FALSE}
 htmltools::withTags(
