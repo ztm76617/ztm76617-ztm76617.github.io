@@ -23,7 +23,7 @@ listing: projects # do this exactly
 }
 ```
 
-## Research Projects
+## Current Research
 
 ### Works in Progress
 
@@ -44,8 +44,6 @@ htmltools::withTags(
 knitr::include_graphics("fed-paper.pdf")
 ```
 
-<br>
-<br>
 <br>
 <br>
 <br>
