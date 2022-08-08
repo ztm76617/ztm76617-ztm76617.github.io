@@ -2,45 +2,6 @@
 title: ""  # any name you want here
 listing: projects # do this exactly
 ---
-  
-## Research Projects
-
-### Works in Progress
-
-```{r card1, echo = FALSE}
-htmltools::withTags(
-    div(class = "card2",
-        div(class = "paper-title",
-            "The Myth of the Myth of Independence: A Critical Response to Binder & Spindel"),
-        div(class = "paper-authors",
-            "Zachary Thomas McDowell"),
-         div(class = "paper-date",
-          "July 2022 - Current")
-          )
-  )
-```
-
-```{r paper1, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%"}
-knitr::include_graphics("fed-paper.pdf")
-```
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-***
 
 ```{css echo = FALSE}
 .card2 {
@@ -61,6 +22,45 @@ knitr::include_graphics("fed-paper.pdf")
   font-size: .9rem
 }
 ```
+
+## Research Projects
+
+### Works in Progress
+
+```{r card1, echo = FALSE}
+htmltools::withTags(
+    div(class = "card2",
+        div(class = "paper-title",
+            "The Myth of the Myth of Independence: A Critical Response to Binder & Spindel"),
+        div(class = "paper-authors",
+            "Zachary Thomas McDowell"),
+         div(class = "paper-date",
+          "July 2022 - Current")
+          )
+  )
+```
+
+```{r paper1, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%", fig.pos="H"}
+knitr::include_graphics("fed-paper.pdf")
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+***
 
 ### Working Papers
 
