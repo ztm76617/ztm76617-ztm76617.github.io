@@ -7,7 +7,7 @@ listing: projects # do this exactly
 
 ### Works in Progress
 
-```{r echo = FALSE}
+```{r card1, echo = FALSE}
 htmltools::withTags(
     div(class = "card2",
         div(class = "paper-title",
@@ -43,6 +43,41 @@ htmltools::withTags(
 ### Working Papers
 
 ```{r paper1, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%"}
+knitr::include_graphics("fed-paper.pdf")
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+***
+
+```{r card2, echo = FALSE}
+htmltools::withTags(
+    div(class = "card2",
+        div(class = "paper-title",
+            "The Political Consequences of Falling Profit Rates: An Empirical Analysis of Private Welfare Spending in OECD Countries"),
+        div(class = "paper-authors",
+            "Zachary Thomas McDowell"),
+         div(class = "paper-date",
+          "February 2021 - May 2022")
+          )
+  )
+```
+
+```{r paper2, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%"}
 knitr::include_graphics("welfare-paper.pdf")
 ```
 
@@ -64,7 +99,20 @@ knitr::include_graphics("welfare-paper.pdf")
 
 ***
 
-```{r paper2, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%"}
+```{r card3, echo = FALSE}
+htmltools::withTags(
+    div(class = "card2",
+        div(class = "paper-title",
+            "The Complicated State of Welfare: Examining Divided Social Protection Sytems in Advanced Democracies"),
+        div(class = "paper-authors",
+            "Zachary Thomas McDowell"),
+         div(class = "paper-date",
+          "January 2022 - May 2022")
+          )
+  )
+```
+
+```{r paper3, echo=FALSE, cache=TRUE, fig.align = "center", out.width = "100%", out.height = "400%"}
 knitr::include_graphics("welfare-lit-review-2.1.pdf")
 ```
 
